@@ -1,11 +1,13 @@
-import { Button } from './components/ui/button';
+import { ThemeProvider } from '@/components/theme-provider';
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 
-const App = () => {
+function App() {
   return (
-    <div className="font-bold underline text-red-600">
-      <Button variant="destructive">Click me</Button>
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
