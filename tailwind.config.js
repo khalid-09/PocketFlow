@@ -19,6 +19,8 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        rob: ['Roboto', 'sans-serif'],
+        rub: ['Rubik', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

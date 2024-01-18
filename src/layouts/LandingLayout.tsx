@@ -3,12 +3,12 @@ import Header from '@/components/Header';
 
 const LandingLayout = () => {
   return (
-    <>
-      <Header />
-      <div>
+    <div className="overflow-hidden ">
+      <div className="container mx-auto px-3">
+        <Header />
         <Outlet />
       </div>
-    </>
+    </div>
   );
 };
 

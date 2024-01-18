@@ -5,7 +5,7 @@ import { Radar } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="justify-between flex font-inter m-4 gap-2">
+    <header className="justify-between p-6 flex fixed left-0 top-0 z-10 h-16 gap-2 font-rub w-full">
       <Link className="ml-4" to="/">
         <Radar className="text-red-500/80 w-8 h-8" />
       </Link>
@@ -13,7 +13,7 @@ const Header = () => {
         <Button asChild variant="ghost">
           <Link to="/Login">Login</Link>
         </Button>
-        <Button asChild className="px-10" variant="outline">
+        <Button asChild className="px-10 shadow-md" variant="outline">
           <Link to="SignUp">Sign Up</Link>
         </Button>
         <ModeToggle />
