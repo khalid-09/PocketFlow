@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+// layouts
 import RootLayout from './layouts/RootLayout';
 import LandingLayout from './layouts/LandingLayout';
 import AuthLayout from './layouts/AuthLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 
+// pages
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
