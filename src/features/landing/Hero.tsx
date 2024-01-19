@@ -21,7 +21,12 @@ const Hero = () => {
               className="border font-rub border-red-400"
               asChild
             >
-              <Link to="/Login">Get Started Now</Link>
+              <Link
+                className="hover:text-red-400 hover:border-none transition duration-300 ease-in"
+                to="/Login"
+              >
+                Get Started Now
+              </Link>
             </Button>
           </div>
         </div>
