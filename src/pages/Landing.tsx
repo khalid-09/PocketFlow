@@ -1,3 +1,5 @@
+import CTA from '@/features/landing/CTA';
+import Discover from '@/features/landing/Discover';
 import Features from '@/features/landing/Features';
 import Hero from '@/features/landing/Hero';
 
@@ -6,6 +8,8 @@ const Landing = () => {
     <>
       <Hero />
       <Features />
+      <Discover />
+      <CTA />
     </>
   );
 };
