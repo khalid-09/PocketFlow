@@ -41,12 +41,13 @@ const Discover = () => {
         <p className="font-rub">Journey into Financial Clarity</p>
       </div>
       {discoveries.map(discover => (
-        <div className="flex items-center justify-center font-rub flex-col md:flex-row gap-8 px-3 md:p-0 md:mt-10 mt-4">
+        <div className="flex items-center justify-center flex-col font-rub md:flex-row gap-8 px-3 md:p-0 md:mt-10 mt-4">
           {discover.reverse && (
             <img
               src={discover.imgPath}
               alt={`${discover.heading} title`}
               width={300}
+              className="hidden md:block"
             />
           )}
           <Card className="" key={discover.heading}>
@@ -64,6 +65,7 @@ const Discover = () => {
               src={discover.imgPath}
               alt={`${discover.heading} title`}
               width={300}
+              className="hidden md:block"
             />
           )}
         </div>
