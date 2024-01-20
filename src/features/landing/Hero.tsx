@@ -22,7 +22,7 @@ const Hero = () => {
               asChild
             >
               <Link
-                className="hover:border-red-400 hover:border outline-none dark:hover:text-red-50 hover:text-red-600 transition duration-300 ease-in tracking-wide"
+                className="hover:border-red-400 hover:border hover:bg-transparent dark:hover:text-red-50 hover:text-red-600 tracking-wide"
                 to="/login"
               >
                 Get Started Now

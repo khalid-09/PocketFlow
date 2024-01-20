@@ -10,16 +10,16 @@ const AuthLayout = () => {
   if (location.pathname === '/signup') title = 'Create your account.';
   if (location.pathname === '/reset-password') title = 'Reset your password';
 
-  const showForm = title !== 'Reset your password';
+  const showAuth = title !== 'Reset your password';
 
   return (
-    <div className="h-dvh flex items-center font-rub flex-col  pt-32 ">
+    <div className="h-dvh flex items-center font-rub flex-col pt-32 ">
       <div className="mt-0 flex max-w-2xl flex-col items-center justify-between border-0 bg-transparent p-6 gap-4 sm:flex-row">
         <div className="flex-1 space-y-4">
           <h1 className="text-xl">{title}</h1>
           <Outlet />
         </div>
-        {showForm && (
+        {showAuth && (
           <>
             <div className="my-4 h-px w-20 bg-gray-300 sm:mx-4 sm:h-20 sm:w-px" />
             <div className="flex w-full flex-col gap-2 sm:w-auto">

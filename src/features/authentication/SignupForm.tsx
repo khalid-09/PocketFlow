@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
   return (
-    <div>
+    <div className="font-rub">
       <form>
         <div className="space-y-2">
           <Label htmlFor="username">Username</Label>
