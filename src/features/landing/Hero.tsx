@@ -23,7 +23,7 @@ const Hero = () => {
             >
               <Link
                 className="hover:border-red-400 hover:border outline-none dark:hover:text-red-50 hover:text-red-600 transition duration-300 ease-in tracking-wide"
-                to="/Login"
+                to="/login"
               >
                 Get Started Now
               </Link>

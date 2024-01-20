@@ -11,10 +11,10 @@ const Header = () => {
       </Link>
       <nav className="flex gap-2">
         <Button asChild variant="ghost">
-          <Link to="/Login">Login</Link>
+          <Link to="/login">Login</Link>
         </Button>
         <Button asChild className="px-10 shadow-md" variant="outline">
-          <Link to="SignUp">Sign Up</Link>
+          <Link to="/signup">Sign Up</Link>
         </Button>
         <ModeToggle />
       </nav>
