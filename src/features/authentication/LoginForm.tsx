@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'react-router-dom';
+import { Login } from '@/types/auth';
 import { loginSchema } from '@/utils/validation/auth';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ReloadIcon } from '@radix-ui/react-icons';
-import { Login } from '@/types/auth';
 
 const LoginForm = () => {
   const {

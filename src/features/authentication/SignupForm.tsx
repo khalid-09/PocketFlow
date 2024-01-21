@@ -1,23 +1,69 @@
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { signupSchema } from '@/utils/validation/auth';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Link } from 'react-router-dom';
+import { Signup } from '@/types/auth';
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const SignupForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<Signup>({ resolver: zodResolver(signupSchema) });
+
+  const onSubmit = (data: Signup) => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <div className="font-rub">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-2">
           <Label htmlFor="username">Username</Label>
-          <Input type="username" id="username" placeholder="Username" />
+          <Input
+            type="username"
+            id="username"
+            placeholder="Username"
+            {...register('username')}
+          />
+          {errors?.username && (
+            <span className="ml-2 text-red-400 text-sm"></span>
+          )}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email Address</Label>
-          <Input type="email" id="email" placeholder="Email Address" />
+          <Input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            {...register('email')}
+          />
+          {errors?.email && (
+            <span className="ml-2 text-red-400 text-sm">
+              {errors?.email?.message}
+            </span>
+          )}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="password">Password</Label>
-          <Input type="password" id="password" placeholder="Password" />
+          <Input
+            type="password"
+            id="password"
+            placeholder="Password"
+            {...register('password')}
+          />
+          {errors?.password && (
+            <span className="ml-2 text-red-400 text-sm">
+              {errors?.password?.message}
+            </span>
+          )}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="confirm-pass">Confirm Password</Label>
@@ -25,10 +71,16 @@ const SignupForm = () => {
             type="password"
             id="confirm-pass"
             placeholder="Confirm Password"
+            {...register('confirmPassowrd')}
           />
+          {errors?.confirmPassowrd && (
+            <span className="ml-2 text-red-400 text-sm">
+              {errors?.confirmPassowrd?.message}
+            </span>
+          )}
         </div>
         <Button className="w-full mt-4">
-          {/* {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '} */}
+          {isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
           Sign Up
         </Button>
       </form>
