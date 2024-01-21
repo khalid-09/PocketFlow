@@ -1,25 +1,60 @@
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from 'react-router-dom';
+import { loginSchema } from '@/utils/validation/auth';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ReloadIcon } from '@radix-ui/react-icons';
-import { Link } from 'react-router-dom';
+import { Login } from '@/types/auth';
 
 const LoginForm = () => {
-  const isLoading = false;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<Login>({ resolver: zodResolver(loginSchema) });
+
+  const onSubmit = (data: Login) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-2">
           <Label htmlFor="email">Email Address</Label>
-          <Input type="email" id="email" placeholder="Email Address" />
+          <Input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            {...register('email')}
+          />
+          {errors?.email && (
+            <span className="text-red-400 text-sm ml-2">
+              {errors?.email?.message}
+            </span>
+          )}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="password">Password</Label>
-          <Input type="password" id="password" placeholder="Password" />
+          <Input
+            type="password"
+            id="password"
+            placeholder="Password"
+            {...register('password')}
+          />
+          {errors?.password && (
+            <span className="text-red-400 text-sm ml-2">
+              {errors?.password?.message}
+            </span>
+          )}
         </div>
         <Button className=" w-full mt-4">
-          {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          {isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
           Login
         </Button>
       </form>
