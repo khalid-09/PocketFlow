@@ -1,5 +1,8 @@
 import supabase from '@/lib/supabase';
 
+const VITE_SUPABASE_OAUTH_REDIRECT_URL =
+  'http://localhost:5173/dashboard' as const;
+
 export const getUser = async () => {
   const {
     data: { session },
@@ -13,11 +16,20 @@ export const getUser = async () => {
   return user;
 };
 
+export const signInWithGoogle = () => {
+  supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
+    },
+  });
+};
+
 export const signInWithGithub = () => {
   supabase.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: import.meta.env.VITE_SUPABASE_OAUTH_REDIRECT,
+      redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
     },
   });
 };

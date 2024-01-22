@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { logout, signInWithGithub } from '@/services/auth';
+import { logout, signInWithGithub, signInWithGoogle } from '@/services/auth';
 import { useUser } from '@/features/authentication/useUser';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
@@ -28,7 +28,13 @@ const AuthLayout = () => {
           <>
             <div className="my-4 h-px w-20 bg-gray-300 sm:mx-4 sm:h-20 sm:w-px" />
             <div className="flex w-full flex-col gap-2 sm:w-auto">
-              <Button variant="outline">
+              <Button
+                variant="outline"
+                onClick={() => {
+                  console.log('signing in with google');
+                  signInWithGoogle();
+                }}
+              >
                 <FaGoogle className="mr-2 h-4 w-4" />
                 Continue with Google
               </Button>
