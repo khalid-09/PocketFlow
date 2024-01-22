@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Helmet } from 'react-helmet-async';
 import { forgotPasswordSchema } from '@/utils/validation/auth';
+import Error from '@/components/Error';
 
 const ResetPassword = () => {
   const {
@@ -34,11 +35,7 @@ const ResetPassword = () => {
               placeholder="Email Address"
               {...register('email')}
             />
-            {errors?.email && (
-              <span className="text-red-400 text-sm ml-2">
-                {errors?.email?.message}
-              </span>
-            )}
+            {errors?.email && <Error>{errors?.email?.message}</Error>}
           </div>
           <Button className="mt-3 w-full">Send password reset email</Button>
         </form>

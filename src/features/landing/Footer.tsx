@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="mx-auto flex flex-col items-center mb-8 gap-3 justify-center max-w-4xl">
       <Link to="/">
-        <Radar className="text-red-500/80 w-14 h-14 " />
+        <Radar className="text-red-500/80 w-10 h-10 " />
       </Link>
       <h3>
         &copy; {new Date().getFullYear()} PocketFlow. All Rights Reserved.

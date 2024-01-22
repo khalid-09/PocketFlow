@@ -27,6 +27,7 @@ import Profile from './pages/Profile';
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
+    // GUEST
     children: [
       {
         element: <LandingLayout />,

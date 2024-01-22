@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema } from '@/utils/validation/auth';
 
+import Error from '@/components/Error';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -33,9 +34,7 @@ const SignupForm = () => {
             placeholder="Username"
             {...register('username')}
           />
-          {errors?.username && (
-            <span className="ml-2 text-red-400 text-sm"></span>
-          )}
+          {errors?.username && <Error>{errors?.username?.message}</Error>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email Address</Label>
@@ -45,11 +44,7 @@ const SignupForm = () => {
             placeholder="Email Address"
             {...register('email')}
           />
-          {errors?.email && (
-            <span className="ml-2 text-red-400 text-sm">
-              {errors?.email?.message}
-            </span>
-          )}
+          {errors?.email && <Error>{errors?.email?.message}</Error>}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="password">Password</Label>
@@ -59,11 +54,7 @@ const SignupForm = () => {
             placeholder="Password"
             {...register('password')}
           />
-          {errors?.password && (
-            <span className="ml-2 text-red-400 text-sm">
-              {errors?.password?.message}
-            </span>
-          )}
+          {errors?.password && <Error>{errors?.password?.message}</Error>}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="confirm-pass">Confirm Password</Label>
@@ -74,9 +65,7 @@ const SignupForm = () => {
             {...register('confirmPassowrd')}
           />
           {errors?.confirmPassowrd && (
-            <span className="ml-2 text-red-400 text-sm">
-              {errors?.confirmPassowrd?.message}
-            </span>
+            <Error>{errors?.confirmPassowrd?.message}</Error>
           )}
         </div>
         <Button className="w-full mt-4">

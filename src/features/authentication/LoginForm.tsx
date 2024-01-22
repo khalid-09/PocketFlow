@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ReloadIcon } from '@radix-ui/react-icons';
+import Error from '@/components/Error';
 
 const LoginForm = () => {
   const {
@@ -33,11 +34,7 @@ const LoginForm = () => {
             placeholder="Email Address"
             {...register('email')}
           />
-          {errors?.email && (
-            <span className="text-red-400 text-sm ml-2">
-              {errors?.email?.message}
-            </span>
-          )}
+          {errors?.email && <Error>{errors?.email?.message}</Error>}
         </div>
         <div className="space-y-2 mt-2">
           <Label htmlFor="password">Password</Label>
@@ -47,11 +44,7 @@ const LoginForm = () => {
             placeholder="Password"
             {...register('password')}
           />
-          {errors?.password && (
-            <span className="text-red-400 text-sm ml-2">
-              {errors?.password?.message}
-            </span>
-          )}
+          {errors?.password && <Error>{errors?.password?.message}</Error>}
         </div>
         <Button className=" w-full mt-4">
           {isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
