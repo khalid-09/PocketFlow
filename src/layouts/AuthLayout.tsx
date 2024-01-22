@@ -1,9 +1,14 @@
 import { Button } from '@/components/ui/button';
+import { logout, signInWithGithub } from '@/services/auth';
+import { useUser } from '@/features/authentication/useUser';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const AuthLayout = () => {
   const location = useLocation();
+  const { isAuthenticated, user } = useUser();
+
+  if (isAuthenticated && user) return <Navigate to="/dashboard" />;
 
   let title = '';
   if (location.pathname === '/login') title = 'Log In to your account.';
@@ -27,8 +32,22 @@ const AuthLayout = () => {
                 <FaGoogle className="mr-2 h-4 w-4" />
                 Continue with Google
               </Button>
-              <Button color="gray">
+              <Button
+                onClick={() => {
+                  console.log('signing in with github');
+                  signInWithGithub();
+                }}
+                color="gray"
+              >
                 <FaGithub className="mr-2 h-4 w-4" /> Continue with Github
+              </Button>
+              <Button
+                onClick={() => {
+                  console.log('logging out');
+                  logout();
+                }}
+              >
+                Sign Out
               </Button>
             </div>
           </>
