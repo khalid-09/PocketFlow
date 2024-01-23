@@ -4,6 +4,7 @@ import MainNav from '../ui/MainNav';
 import { Radar } from 'lucide-react';
 import { ModeToggle } from '../mode-toggle';
 import UserProfile from './UserProfile';
+import MobileNav from './MobileNav';
 
 const MainHeader = () => {
   return (
@@ -15,6 +16,9 @@ const MainHeader = () => {
         <div className="sm:flex hidden items-center gap-4">
           <MainNav />
           <UserProfile />
+        </div>
+        <div className="block sm:hidden ">
+          <MobileNav />
         </div>
         <ModeToggle />
       </div>

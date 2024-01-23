@@ -7,12 +7,12 @@ const DashboardLayout = () => {
   const { user, isAuthenticated } = useUser();
 
   console.log(user);
-  // if (!user || !isAuthenticated) return <Navigate to="/login" />;
+  if (!user || !isAuthenticated) return <Navigate to="/login" />;
 
   return (
-    <div className="">
+    <div className="px-3 pt-16 sm:px-6">
       <MainHeader />
-      <div className="">
+      <div className="py-3">
         <Outlet />
       </div>
       <MainFooter />
