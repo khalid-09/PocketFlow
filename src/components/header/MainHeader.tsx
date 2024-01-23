@@ -1,25 +1,21 @@
-import { Radar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ModeToggle } from '../mode-toggle';
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
+
 import MainNav from '../ui/MainNav';
+import { Radar } from 'lucide-react';
+import { ModeToggle } from '../mode-toggle';
+import UserProfile from './UserProfile';
 
 const MainHeader = () => {
   return (
-    <header className="flex justify-around items-center">
+    <header className="fixed inset-x-0 left-0 top-0 z-10  h-16 w-full  flex justify-between px-6  shadow-sm backdrop-blur items-center">
       <Link to="/dashboard">
         <Radar className="text-red-500/80 w-8 h-8" />
       </Link>
-      <div className="flex gap-4">
-        <MainNav />
-        <Avatar>
-          <AvatarImage
-            className="h-8 rounded-full"
-            src="https://github.com/shadcn.png"
-            alt="avatar-image"
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+      <div className="flex items-center gap-3">
+        <div className="sm:flex hidden items-center gap-4">
+          <MainNav />
+          <UserProfile />
+        </div>
         <ModeToggle />
       </div>
     </header>
