@@ -10,7 +10,7 @@ const navItems = [
 
 const MainNav = () => {
   return (
-    <Menubar>
+    <Menubar className="mr-4">
       {navItems.map(item => (
         <MenubarMenu key={item.name}>
           <MenubarTrigger>

@@ -1,6 +1,5 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Sheet,
   SheetClose,
@@ -15,8 +14,28 @@ import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { FaList } from 'react-icons/fa6';
 
+const navLinks = [
+  {
+    to: '/dashboard',
+    name: 'Dashboard',
+  },
+  {
+    to: 'expenses',
+    name: 'Expenses',
+  },
+  {
+    to: 'incomes',
+    name: 'Incomes',
+  },
+  {
+    to: 'category',
+    name: 'Category',
+  },
+];
+
 const MobileNav = () => {
   const { user } = useUser();
+  const navigate = useNavigate();
 
   return (
     <Sheet>
@@ -39,25 +58,29 @@ const MobileNav = () => {
             </Avatar>
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+        <div className="mt-8">
+          <div>
+            <ul className="flex flex-col gap-4">
+              {navLinks.map(link => (
+                <li key={link.name}>
+                  <SheetClose asChild>
+                    <Link to={link.to}>{link.name}</Link>
+                  </SheetClose>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div>
+          <SheetFooter className="mt-96 flex gap-2">
+            <SheetClose asChild>
+              <Button variant="destructive" type="submit">
+                Log Out
+              </Button>
+            </SheetClose>
+            <SheetClose asChild>
+              <Button onClick={() => navigate('profile')}>Profile</Button>
+            </SheetClose>
+          </SheetFooter>
         </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
