@@ -23,9 +23,9 @@ const Stat = ({ current, prev, label }: StatPorps) => {
       </CardHeader>
       <CardContent className="flex items-center gap-4">
         {current && current > prev ? (
-          <FaArrowTrendUp className="text-red-600 rounded-2xl bg-red-50 p-2 w-8 h-8" />
-        ) : (
           <FaArrowTrendDown className="text-red-600 rounded-2xl bg-red-50 p-2 w-8 h-8" />
+        ) : (
+          <FaArrowTrendUp className="text-green-600 rounded-2xl bg-green-50 p-2 w-8 h-8" />
         )}
         0.00$ to previous month
       </CardContent>

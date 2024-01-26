@@ -1,4 +1,4 @@
-import { Card, CardDescription, CardHeader } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const StatSkeleton = () => {

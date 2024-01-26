@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import DateRangePicker from '@/features/dashboard/DateRangePicker';
 import StatSkeleton from '@/features/dashboard/StatSkeleton';
 import Overview from '@/features/dashboard/Overview';
-import OverviewSkeleton from '@/features/dashboard/OverviewSkeleton';
+// import OverviewSkeleton from '@/features/dashboard/OverviewSkeleton';
 import PerformanceChart from '@/features/dashboard/PerformanceChart';
 import Stat from '@/features/dashboard/Stat';
 
@@ -23,7 +23,7 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <PerformanceChart />
-        <OverviewSkeleton />
+        <Overview />
       </div>
     </>
   );

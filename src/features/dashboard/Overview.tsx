@@ -10,7 +10,7 @@ import { FaBarsProgress, FaPiggyBank } from 'react-icons/fa6';
 
 const Overview = () => {
   return (
-    <Card className="md:w-1/3 w-full">
+    <Card>
       <CardHeader>
         <CardTitle>Overview</CardTitle>
       </CardHeader>
