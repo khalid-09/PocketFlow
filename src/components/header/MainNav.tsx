@@ -1,5 +1,6 @@
 import { Menubar, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar';
 import { Link } from 'react-router-dom';
+import { Separator } from '../ui/separator';
 
 const navItems = [
   { link: '/dashboard', name: 'Dashboard' },
@@ -16,6 +17,9 @@ const MainNav = () => {
           <MenubarTrigger>
             <Link to={item.link}>{item.name}</Link>
           </MenubarTrigger>
+          {item.name === 'Category' ? null : (
+            <Separator orientation="vertical" />
+          )}
         </MenubarMenu>
       ))}
     </Menubar>

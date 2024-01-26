@@ -20,10 +20,10 @@ const Overview = () => {
             <TabsTrigger value="account">Expenses</TabsTrigger>
             <TabsTrigger value="password">Incomes</TabsTrigger>
           </TabsList>
-          <CardDescription className="flex justify-between p-3">
-            <CardTitle>Category</CardTitle>
-            <CardTitle>Total</CardTitle>
-          </CardDescription>
+          <div className="flex justify-between p-3">
+            <CardDescription>Category</CardDescription>
+            <CardDescription>Total</CardDescription>
+          </div>
           <TabsContent value="account" className="p-3">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">

@@ -30,7 +30,7 @@ export default function UserProfile() {
             src={user?.user_metadata?.avatar_url}
           />
           <AvatarFallback>{fallBackName}</AvatarFallback>
-          <span>{user?.user_metadata?.full_name}</span>
+          <span className="text-base">{user?.user_metadata?.full_name}</span>
           <FaList />
         </Avatar>
       </DropdownMenuTrigger>

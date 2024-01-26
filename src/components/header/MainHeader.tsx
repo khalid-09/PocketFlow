@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import MainNav from '../ui/MainNav';
+import MainNav from './MainNav';
 import { Radar } from 'lucide-react';
 import { ModeToggle } from '../mode-toggle';
 import UserProfile from './UserProfile';
@@ -12,7 +12,7 @@ const MainHeader = () => {
       <Link to="/dashboard">
         <Radar className="text-red-500/80 w-8 h-8" />
       </Link>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <div className="sm:flex hidden items-center gap-4">
           <MainNav />
           <UserProfile />
