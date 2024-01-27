@@ -1,3 +1,4 @@
+import CategoryChart from '@/features/category/CategoryChart';
 import ExpensesPerCategory from '@/features/category/ExpensesPerCategory';
 import DateRangePicker from '@/features/dashboard/DateRangePicker';
 import { Helmet } from 'react-helmet-async';
@@ -16,6 +17,7 @@ const Categories = () => {
         <DateRangePicker />
       </div>
       <ExpensesPerCategory />
+      <CategoryChart />
     </>
   );
 };
