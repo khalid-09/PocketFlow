@@ -15,7 +15,7 @@ const Overview = () => {
         <CardTitle>Overview</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="account" className="w-[400px]">
+        <Tabs defaultValue="account" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account">Expenses</TabsTrigger>
             <TabsTrigger value="password">Incomes</TabsTrigger>

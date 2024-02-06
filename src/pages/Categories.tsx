@@ -12,7 +12,7 @@ const Categories = () => {
           Category
         </h1>
       </div>
-      <div className="font-rub flex items-center justify-between flex-wrap">
+      <div className="font-rub flex items-center justify-between gap-4 flex-wrap">
         <p>Expenses Per Category</p>
         <DateRangePicker />
       </div>

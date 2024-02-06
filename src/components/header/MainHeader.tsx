@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
+import { ModeToggle } from '../mode-toggle';
+import { Radar } from 'lucide-react';
 
 import MainNav from './MainNav';
-import { Radar } from 'lucide-react';
-import { ModeToggle } from '../mode-toggle';
 import UserProfile from './UserProfile';
 import MobileNav from './MobileNav';
 
