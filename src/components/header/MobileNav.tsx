@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/sheet';
 import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { FaList } from 'react-icons/fa6';
 import { RiMenu4Fill } from 'react-icons/ri';
 
 const navLinks = [
@@ -45,7 +44,7 @@ const MobileNav = () => {
           <RiMenu4Fill />
         </Button>
       </SheetTrigger>
-      <SheetContent className="font-rub w-[65%]">
+      <SheetContent className="font-rub w-[65%] flex flex-col">
         <SheetHeader>
           <SheetTitle>Profile</SheetTitle>
           <SheetDescription>
@@ -59,7 +58,7 @@ const MobileNav = () => {
             </Avatar>
           </SheetDescription>
         </SheetHeader>
-        <div className="mt-8">
+        <div className="mt-8 flex-1 flex flex-col justify-between ">
           <div>
             <ul className="flex flex-col gap-4">
               {navLinks.map(link => (
@@ -71,7 +70,7 @@ const MobileNav = () => {
               ))}
             </ul>
           </div>
-          <SheetFooter className="mt-96 flex gap-2">
+          <SheetFooter className=" flex gap-2">
             <SheetClose asChild>
               <Button variant="destructive" type="submit">
                 Log Out
