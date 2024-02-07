@@ -13,6 +13,7 @@ import {
 import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { FaList } from 'react-icons/fa6';
+import { RiMenu4Fill } from 'react-icons/ri';
 
 const navLinks = [
   {
@@ -41,7 +42,7 @@ const MobileNav = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">
-          <FaList />
+          <RiMenu4Fill />
         </Button>
       </SheetTrigger>
       <SheetContent className="font-rub w-[65%]">

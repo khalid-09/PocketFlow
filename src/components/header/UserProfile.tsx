@@ -8,16 +8,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useLogout } from '@/features/authentication/useLogout';
 import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { ReloadIcon } from '@radix-ui/react-icons';
-import { FaList } from 'react-icons/fa6';
+import { RiMenu4Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 
 export default function UserProfile() {
   const { user } = useUser();
-  const { mutate: logout, isSuccess } = useLogout();
 
   const fallBackName: string = user?.user_metadata?.full_name
     .split(' ')
@@ -34,7 +31,9 @@ export default function UserProfile() {
           />
           <AvatarFallback>{fallBackName}</AvatarFallback>
           <span className="text-base">{user?.user_metadata?.full_name}</span>
-          <FaList />
+          <Button variant="outline" size="icon">
+            <RiMenu4Fill />
+          </Button>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
@@ -48,7 +47,6 @@ export default function UserProfile() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Button variant="destructive" size="sm" onClick={() => {}}>
-            {isSuccess && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}
             Logout
           </Button>
         </DropdownMenuItem>

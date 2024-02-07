@@ -1,5 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+
 const Expenses = () => {
-  return <div>Expenses</div>;
+  return (
+    <>
+      <Helmet title="PocketFlow | Expenses" />
+    </>
+  );
 };
 
 export default Expenses;

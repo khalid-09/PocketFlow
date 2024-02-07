@@ -12,7 +12,7 @@ const MainHeader = () => {
       <Link to="/dashboard">
         <Radar className="text-red-500/80 w-8 h-8" />
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1 md:gap-2">
         <div className="sm:flex hidden items-center gap-4">
           <MainNav />
           <UserProfile />
