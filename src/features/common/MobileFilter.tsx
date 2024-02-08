@@ -16,6 +16,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { VscSettings } from 'react-icons/vsc';
+import Filter from './Filter';
 
 const MobileFilter = () => {
   return (
@@ -36,9 +37,12 @@ const MobileFilter = () => {
       </DrawerTrigger>
       <DrawerContent className="font-rub">
         <DrawerHeader>
-          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+          <DrawerTitle>Filters</DrawerTitle>
           <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
+        <div className="px-4">
+          <Filter />
+        </div>
         <DrawerFooter>
           <Button>Submit</Button>
           <DrawerClose>

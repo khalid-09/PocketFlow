@@ -40,7 +40,7 @@ const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
+        <Button size="icon" variant="outline">
           <RiMenu4Fill />
         </Button>
       </SheetTrigger>
