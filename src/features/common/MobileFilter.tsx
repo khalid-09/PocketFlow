@@ -38,15 +38,13 @@ const MobileFilter = () => {
       <DrawerContent className="font-rub">
         <DrawerHeader>
           <DrawerTitle>Filters</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
         <div className="px-4">
-          <Filter />
+          <Filter isMobile={true} />
         </div>
         <DrawerFooter>
-          <Button>Submit</Button>
           <DrawerClose>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="ghost">Close</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
