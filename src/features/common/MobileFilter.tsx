@@ -3,7 +3,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -40,7 +39,7 @@ const MobileFilter = () => {
           <DrawerTitle>Filters</DrawerTitle>
         </DrawerHeader>
         <div className="px-4">
-          <Filter isMobile={true} />
+          <Filter onMobile={true} />
         </div>
         <DrawerFooter>
           <DrawerClose>

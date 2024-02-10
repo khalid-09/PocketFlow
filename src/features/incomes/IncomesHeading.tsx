@@ -11,7 +11,7 @@ const IncomesHeading = () => {
         <Link to="create" className="hidden lg:block">
           <Button
             variant="ghost"
-            className="font-rub text-base hover:text-blue-300 text-red-400  "
+            className="font-rub text-base hover:text-red-400 text-red-400  "
           >
             <MdAddTask className="mr-1" />
             Add Income
