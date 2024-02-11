@@ -23,7 +23,7 @@ const MobileFilter = () => {
       <DrawerTrigger>
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button variant="outline" className="mr-3 lg:hidden">
                 <VscSettings />
               </Button>

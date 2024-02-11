@@ -11,6 +11,8 @@ import {
 import { FaTrashAlt } from 'react-icons/fa';
 import { FaPen } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import ConfirmDialogBox from '@/components/ConfirmDialogBox';
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -49,28 +51,34 @@ export const columns: ColumnDef<Payment>[] = [
       const payment = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>
-              <Button variant="ghost">
+        <Dialog>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem>
+                {/* <Button variant="ghost">
                 <FaTrashAlt className="mr-2 text-red-500" />
                 Delete
-              </Button>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link to={`${payment.id}/edit`} className="flex items-center">
-                <FaPen className="mr-2 font-rub text-blue-500" /> Edit
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+              </Button> */}
+                <DialogTrigger className="flex items-center">
+                  <FaTrashAlt className="mr-2 flex text-red-500" /> Delete
+                </DialogTrigger>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link to={`${payment.id}/edit`} className="flex items-center">
+                  <FaPen className="mr-2 font-rub text-blue-500" /> Edit
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <ConfirmDialogBox />
+        </Dialog>
       );
     },
   },
