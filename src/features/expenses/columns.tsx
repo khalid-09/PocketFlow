@@ -13,24 +13,25 @@ import { FaPen } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import ConfirmDialogBox from '@/components/ConfirmDialogBox';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
+import { DataTableColumnHeader } from './DataTableColumnHeader';
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 export type Payment = {
   id: string;
   amount: number;
   status: 'pending' | 'processing' | 'success' | 'failed';
-  email: string;
+  title: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 'status',
-    header: 'Title',
+    header: '',
   },
   {
-    accessorKey: 'email',
-    header: 'Date',
+    accessorKey: 'title',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Title" />
+    ),
   },
   {
     accessorKey: 'amount',

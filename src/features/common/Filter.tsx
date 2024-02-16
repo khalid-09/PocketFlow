@@ -29,23 +29,23 @@ const Filter = ({ onMobile }: FilterProps) => {
         className="space-y-2 lg:space-y-4"
       >
         <div className="space-y-1">
-          <Label>Date</Label>
+          <Label>Filter by Date</Label>
           <DateRangePicker />
         </div>
         <div className="space-y-1">
-          <Label>Search</Label>
+          <Label>Filter by Title</Label>
           <Input />
         </div>
         <div className="space-y-1">
-          <Label>Minimum amount</Label>
+          <Label>Filter by Minimum amount</Label>
           <Input />
         </div>
         <div className="space-y-1">
-          <Label>Maximum amount</Label>
+          <Label>Filter by Maximum amount</Label>
           <Input />
         </div>
         <div className="space-y-1">
-          <Label>Category</Label>
+          <Label>Filter by Category</Label>
           <SelectCategroy />
         </div>
         <div className="space-y-1">

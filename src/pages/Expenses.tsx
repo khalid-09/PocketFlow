@@ -9,7 +9,13 @@ const data: Payment[] = [
     id: '728ed52f',
     amount: 100,
     status: 'pending',
-    email: 'm@example.com',
+    title: 'Savings Deposit',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
   },
 ];
 
