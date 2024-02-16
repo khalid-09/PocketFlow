@@ -20,6 +20,7 @@ export type Payment = {
   amount: number;
   status: 'pending' | 'processing' | 'success' | 'failed';
   title: string;
+  date: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
@@ -32,6 +33,10 @@ export const columns: ColumnDef<Payment>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Title" />
     ),
+  },
+  {
+    accessorKey: 'date',
+    header: 'Date',
   },
   {
     accessorKey: 'amount',

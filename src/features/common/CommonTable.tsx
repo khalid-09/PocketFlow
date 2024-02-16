@@ -21,14 +21,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { useState } from 'react';
-import { DataTableViewOptions } from './DataTableViewOptions';
+import { DataTableViewOptions } from '../expenses/DataTableViewOptions';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-function ExpensesTable<TData, TValue>({
+function CommonTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -49,7 +49,7 @@ function ExpensesTable<TData, TValue>({
   return (
     <>
       <div>
-        <div className="mx-3  lg:mx-6  py-4">
+        <div className="mx-3 lg:mx-6  py-4">
           <DataTableViewOptions table={table} />
         </div>
         <div className="rounded-md mx-3 lg:mx-6 border">
@@ -125,4 +125,4 @@ function ExpensesTable<TData, TValue>({
   );
 }
 
-export default ExpensesTable;
+export default CommonTable;

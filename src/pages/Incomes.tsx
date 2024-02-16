@@ -1,7 +1,25 @@
+import CommonTable from '@/features/common/CommonTable';
 import Filter from '@/features/common/Filter';
+import { Payment, columns } from '@/features/expenses/columns';
 import IncomesHeading from '@/features/incomes/IncomesHeading';
-import IncomesTable from '@/features/incomes/IncomesTable';
 import { Helmet } from 'react-helmet-async';
+
+const data: Payment[] = [
+  {
+    id: '728ed52f',
+    amount: 100,
+    status: 'pending',
+    title: 'Savings Deposit',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+];
 
 const Incomes = () => {
   return (
@@ -13,7 +31,7 @@ const Incomes = () => {
         </div>
         <section className="min-h-screen flex-1">
           <IncomesHeading />
-          <IncomesTable />
+          <CommonTable columns={columns} data={data} />
         </section>
       </div>
     </>

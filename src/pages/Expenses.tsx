@@ -1,6 +1,6 @@
 import Filter from '@/features/common/Filter';
 import ExpensesHeading from '@/features/expenses/ExpensesHeading';
-import ExpensesTable from '@/features/expenses/ExpensesTable';
+import CommonTable from '@/features/common/CommonTable';
 import { Payment, columns } from '@/features/expenses/columns';
 import { Helmet } from 'react-helmet-async';
 
@@ -10,12 +10,14 @@ const data: Payment[] = [
     amount: 100,
     status: 'pending',
     title: 'Savings Deposit',
+    date: '2021-09-01',
   },
   {
     id: '728ed52a',
     amount: 101,
     status: 'pending',
     title: 'Life Insurance',
+    date: '2021-09-01',
   },
 ];
 
@@ -29,7 +31,7 @@ const Expenses = () => {
         </div>
         <section className="min-h-dvh flex-1">
           <ExpensesHeading />
-          <ExpensesTable columns={columns} data={data} />
+          <CommonTable columns={columns} data={data} />
         </section>
       </div>
     </>
