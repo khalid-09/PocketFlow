@@ -26,9 +26,9 @@ const Incomes = () => {
     <>
       <Helmet title="PocketFlow | Incomes" />
       <div className="flex divide-gray-300 font-rub lg:divide-x ">
-        <div className="hidden lg:block w-1/3 p-8">
+        {/* <div className="hidden lg:block w-1/3 p-8">
           <Filter />
-        </div>
+        </div> */}
         <section className="min-h-screen flex-1">
           <Heading title="Incomes" actionName="Add Income" />
           <CommonTable columns={columns} data={data} />

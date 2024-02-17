@@ -22,8 +22,9 @@ import {
 } from '@/components/ui/table';
 import { useState } from 'react';
 import { DataTableViewOptions } from './DataTableViewOptions';
+
 import Filter from './Filter';
-import { Input } from '@/components/ui/input';
+import MobileFilter from './MobileFilter';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -54,21 +55,18 @@ const CommonTable = <TData, TValue>({
 
   return (
     <>
-      <div className="">
-        <div className="">
-          <div className="flex items-center mx-3 mb-3 lg:mx-6">
-            <Input
-              placeholder="Filter emails..."
-              value={
-                (table.getColumn('title')?.getFilterValue() as string) ?? ''
-              }
-              onChange={event =>
-                table.getColumn('title')?.setFilterValue(event.target.value)
-              }
-              className="max-w-sm"
-            />
+      <div className="flex flex-col lg:flex-row lg:px-6 divide-gray-100 font-rub lg:divide-x">
+        <div className="hidden w-1/3 mr-6 lg:block">
+          <Filter table={table} />
+        </div>
+        <div className="flex ml-auto">
+          <MobileFilter table={table} />
+        </div>
+        <div className="w-full lg:w-2/3">
+          <div className="mx-3 lg:mx-6 py-2">
             <DataTableViewOptions table={table} />
           </div>
+          {/* Table */}
           <div className="rounded-md mx-3 lg:mx-6 border">
             <Table>
               <TableHeader>

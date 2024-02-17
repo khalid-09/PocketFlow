@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import MobileFilter from './MobileFilter';
+// import MobileFilter from './MobileFilter';
 import { Button } from '@/components/ui/button';
 import { MdAddTask } from 'react-icons/md';
 
@@ -22,7 +22,7 @@ const Heading = ({ title, actionName }: HeadingProps) => {
             {actionName}
           </Button>
         </Link>
-        <MobileFilter />
+        {/* <MobileFilter /> */}
       </div>
     </div>
   );

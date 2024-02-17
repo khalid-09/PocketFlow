@@ -10,9 +10,10 @@ import { Input } from '@/components/ui/input';
 
 type FilterProps = {
   onMobile?: boolean;
+  table: any;
 };
 
-const Filter = ({ onMobile }: FilterProps) => {
+const Filter = ({ onMobile, table }: FilterProps) => {
   const { handleSubmit, reset } = useForm();
 
   const onSubmit = () => {
@@ -23,9 +24,6 @@ const Filter = ({ onMobile }: FilterProps) => {
 
   return (
     <section>
-      <h2 className={`font-medium text-xl mb-2 ${onMobile ? 'hidden' : ''}`}>
-        Filters
-      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-2 lg:space-y-4"
@@ -36,7 +34,12 @@ const Filter = ({ onMobile }: FilterProps) => {
         </div>
         <div className="space-y-1">
           <Label>Filter by Title</Label>
-          <Input />
+          <Input
+            value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
+            onChange={event =>
+              table.getColumn('title')?.setFilterValue(event.target.value)
+            }
+          />
         </div>
         <div className="space-y-1">
           <Label>Filter by Minimum amount</Label>

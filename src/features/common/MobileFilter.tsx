@@ -17,7 +17,7 @@ import {
 import { VscSettings } from 'react-icons/vsc';
 import Filter from './Filter';
 
-const MobileFilter = () => {
+const MobileFilter = ({ table }: { table: any }) => {
   return (
     <Drawer>
       <DrawerTrigger>
@@ -39,7 +39,7 @@ const MobileFilter = () => {
           <DrawerTitle>Filters</DrawerTitle>
         </DrawerHeader>
         <div className="px-4">
-          <Filter onMobile={true} />
+          <Filter table={table} onMobile={true} />
         </div>
         <DrawerFooter>
           <DrawerClose>

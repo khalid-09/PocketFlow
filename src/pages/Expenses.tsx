@@ -19,17 +19,136 @@ const data: Payment[] = [
     title: 'Life Insurance',
     date: '2021-09-01',
   },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
+  {
+    id: '728ed52a',
+    amount: 101,
+    status: 'pending',
+    title: 'Life Insurance',
+    date: '2021-09-01',
+  },
 ];
 
 const Expenses = () => {
   return (
     <>
       <Helmet title="PocketFlow | Expenses" />
-      <div className="flex divide-gray-100 font-rub lg:divide-x ">
-        <div className="hidden lg:block w-1/3 p-8">
+      <div>
+        {/* <div className="hidden lg:block w-1/3 p-8">
           <Filter />
-        </div>
-        <section className="min-h-dvh flex-1">
+        </div> */}
+        <section className="min-h-dvh">
           <Heading title="Expenses" actionName="Add Expense" />
           <CommonTable columns={columns} data={data} />
         </section>
