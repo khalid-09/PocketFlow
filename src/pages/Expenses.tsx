@@ -1,7 +1,7 @@
 import Filter from '@/features/common/Filter';
-import ExpensesHeading from '@/features/expenses/ExpensesHeading';
+import Heading from '@/features/common/Heading';
 import CommonTable from '@/features/common/CommonTable';
-import { Payment, columns } from '@/features/expenses/columns';
+import { Payment, columns } from '@/features/common/columns';
 import { Helmet } from 'react-helmet-async';
 
 const data: Payment[] = [
@@ -30,7 +30,7 @@ const Expenses = () => {
           <Filter />
         </div>
         <section className="min-h-dvh flex-1">
-          <ExpensesHeading />
+          <Heading title="Expenses" actionName="Add Expense" />
           <CommonTable columns={columns} data={data} />
         </section>
       </div>

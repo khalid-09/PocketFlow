@@ -1,17 +1,19 @@
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { useForm } from 'react-hook-form';
+
 import DateRangePicker from '../dashboard/DateRangePicker';
-import { Input } from '@/components/ui/input';
 import SelectCategroy from '../category/SelectCategroy';
 import { toast } from 'sonner';
+
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 type FilterProps = {
   onMobile?: boolean;
 };
 
 const Filter = ({ onMobile }: FilterProps) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { handleSubmit, reset } = useForm();
 
   const onSubmit = () => {
     console.log('click');

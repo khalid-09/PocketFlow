@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
-import MobileFilter from '../common/MobileFilter';
+import MobileFilter from './MobileFilter';
 import { Button } from '@/components/ui/button';
 import { MdAddTask } from 'react-icons/md';
 
-const ExpensesHeading = () => {
+type HeadingProps = {
+  title: string;
+  actionName: string;
+};
+
+const Heading = ({ title, actionName }: HeadingProps) => {
   return (
-    <div className="mb-4 flex items-center justify-between px-3 lg:px-6 pt-6">
-      <h1 className="font-medium text-xl">Expenses</h1>
+    <div className=" flex font-rub items-center justify-between px-3 lg:px-6 pt-6">
+      <h1 className="font-medium text-2xl">{title}</h1>
       <div>
         <Link to="create" className="hidden lg:block">
           <Button
@@ -14,7 +19,7 @@ const ExpensesHeading = () => {
             className="font-rub text-base hover:text-red-400 text-red-400  "
           >
             <MdAddTask className="mr-1" />
-            Add Expense
+            {actionName}
           </Button>
         </Link>
         <MobileFilter />
@@ -23,4 +28,4 @@ const ExpensesHeading = () => {
   );
 };
 
-export default ExpensesHeading;
+export default Heading;
