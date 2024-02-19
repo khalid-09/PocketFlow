@@ -1,8 +1,8 @@
-import Filter from '@/features/common/Filter';
+import { Helmet } from 'react-helmet-async';
+
+import { Payment, columns } from '@/features/common/columns';
 import Heading from '@/features/common/Heading';
 import CommonTable from '@/features/common/CommonTable';
-import { Payment, columns } from '@/features/common/columns';
-import { Helmet } from 'react-helmet-async';
 
 const data: Payment[] = [
   {

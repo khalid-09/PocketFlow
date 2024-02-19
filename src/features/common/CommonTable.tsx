@@ -55,15 +55,15 @@ const CommonTable = <TData, TValue>({
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row lg:px-6 divide-gray-100 font-rub lg:divide-x">
+      <div className="flex flex-col lg:flex-row lg:px-4 lg:pl-6 divide-gray-100 font-rub lg:divide-x">
         <div className="hidden w-1/3 mr-6 lg:block">
           <Filter table={table} />
         </div>
-        <div className="flex ml-auto">
+        <div className="flex lg:hidden ml-auto">
           <MobileFilter table={table} />
         </div>
         <div className="w-full lg:w-2/3">
-          <div className="mx-3 lg:mx-6 py-2">
+          <div className="mx-3 lg:mx-6 pb-2">
             <DataTableViewOptions table={table} />
           </div>
           {/* Table */}

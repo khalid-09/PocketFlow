@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -13,7 +13,6 @@ import { FaPen } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import ConfirmDialogBox from '@/components/ConfirmDialogBox';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import { DataTableColumnHeader } from './DataTableColumnHeader';
 
 export type Payment = {
   id: string;
@@ -30,9 +29,17 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: 'title',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
-    ),
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Title
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: 'date',
