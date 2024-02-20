@@ -22,6 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </HelmetProvider>
       </QueryClientProvider>
     </ThemeProvider>
-    <Toaster position="bottom-right" />
+    <Toaster position="top-left" />
   </React.StrictMode>
 );

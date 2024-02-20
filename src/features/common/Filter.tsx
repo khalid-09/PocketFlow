@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 
 import DateRangePicker from '../dashboard/DateRangePicker';
 import SelectCategroy from '../category/SelectCategroy';
-import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -18,7 +17,6 @@ const Filter = ({ onMobile, table }: FilterProps) => {
 
   const onSubmit = () => {
     console.log('click');
-    toast('Table filtered 👍');
     reset();
   };
 
@@ -57,7 +55,7 @@ const Filter = ({ onMobile, table }: FilterProps) => {
           <Label>Tag</Label>
           <Input />
         </div>
-        <div className={`${onMobile ? 'flex justify-end' : ''}`}>
+        <div className={`${onMobile ? 'hidden' : ''}`}>
           <Button>Filter</Button>
         </div>
       </form>

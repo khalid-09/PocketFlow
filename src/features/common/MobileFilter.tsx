@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/tooltip';
 import { VscSettings } from 'react-icons/vsc';
 import Filter from './Filter';
+import { toast } from 'sonner';
 
 const MobileFilter = ({ table }: { table: any }) => {
   return (
@@ -43,7 +44,14 @@ const MobileFilter = ({ table }: { table: any }) => {
         </div>
         <DrawerFooter>
           <DrawerClose>
-            <Button variant="ghost">Close</Button>
+            <Button
+              onClick={() => {
+                toast('Table filtered 👍');
+              }}
+              variant="default"
+            >
+              Filter
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
