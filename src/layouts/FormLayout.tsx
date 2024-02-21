@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Radar } from 'lucide-react';
 import { FaAngleLeft } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,10 +26,10 @@ const FormLayout = ({ children, title }: FormLayoutProps) => {
           Back
         </Button>
       </div>
-      <main className="grid min-h-dvh gap-10 md:grid-cols-2">
+      <main className="grid  gap-10 md:grid-cols-2">
         {children}
-        <div className="hidden min-h-dvh flex-1 items-center justify-center rounded-l-xl md:flex">
-          Logo
+        <div className="hidden  flex-1 bg-red-500 dark:bg-red-50 items-center justify-center rounded-l-xl md:flex">
+          <Radar className="text-red-50 dark:text-red-500 h-20 w-36" />
         </div>
       </main>
     </div>

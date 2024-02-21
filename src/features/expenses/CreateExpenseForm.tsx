@@ -66,7 +66,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -111,7 +110,14 @@ const CreateExpenseForm = () => {
         </pre>
       ),
     });
-    form.reset();
+    form.reset({
+      title: '',
+      amount: '',
+      date: new Date(),
+      category: '',
+      description: '',
+    });
+    console.log({ ...data, date: data.date.toLocaleDateString() });
   };
 
   return (

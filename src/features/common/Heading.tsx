@@ -12,9 +12,10 @@ import {
 type HeadingProps = {
   title: string;
   actionName: string;
+  type: 'expense' | 'income';
 };
 
-const Heading = ({ title, actionName }: HeadingProps) => {
+const Heading = ({ title, actionName, type }: HeadingProps) => {
   return (
     <div className=" flex font-rub items-center justify-between px-3 mb-2 lg:px-6 pt-6">
       <h1 className="font-medium text-2xl">{title}</h1>
@@ -35,7 +36,7 @@ const Heading = ({ title, actionName }: HeadingProps) => {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Add Expense</p>
+                <p>{type === 'expense' ? 'Add Expense' : 'Add Income'}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

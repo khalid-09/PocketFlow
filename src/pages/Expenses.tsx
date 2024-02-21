@@ -149,7 +149,7 @@ const Expenses = () => {
           <Filter />
         </div> */}
         <section className="min-h-dvh">
-          <Heading title="Expenses" actionName="Add Expense" />
+          <Heading type="expense" title="Expenses" actionName="Add Expense" />
           <CommonTable columns={columns} data={data} />
         </section>
       </div>

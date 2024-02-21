@@ -9,14 +9,14 @@ const data: Payment[] = [
     amount: 100,
     status: 'pending',
     title: 'Savings Deposit',
-    date: '2021-09-01',
+    date: '02-01-2024',
   },
   {
     id: '728ed52a',
     amount: 101,
     status: 'pending',
     title: 'Life Insurance',
-    date: '2021-09-01',
+    date: '03-01-2024',
   },
 ];
 
@@ -29,7 +29,7 @@ const Incomes = () => {
           <Filter />
         </div> */}
         <section className="min-h-screen flex-1">
-          <Heading title="Incomes" actionName="Add Income" />
+          <Heading type="income" title="Incomes" actionName="Add Income" />
           <CommonTable columns={columns} data={data} />
         </section>
       </div>
