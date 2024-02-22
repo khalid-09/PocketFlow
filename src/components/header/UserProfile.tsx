@@ -11,10 +11,13 @@ import {
 import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { RiMenu4Fill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa6';
+import { IoMdLogOut } from 'react-icons/io';
 
 export default function UserProfile() {
   const { user } = useUser();
+  const navigate = useNavigate();
 
   const fallBackName: string = user?.user_metadata?.full_name
     .split(' ')
@@ -36,17 +39,28 @@ export default function UserProfile() {
           </Button>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="start">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuContent className="w-40" align="start">
+        <DropdownMenuLabel className="font-rub text-center">
+          My Account
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link to="profile">Profile</Link>
+          <DropdownMenuItem className="flex items-center gap-1">
+            <Button className="w-full" onClick={() => navigate('profile')}>
+              <FaUser className="mr-1 font-rub text-sm" />
+              Profile
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+        {/* <DropdownMenuSeparator /> */}
         <DropdownMenuItem>
-          <Button variant="destructive" size="sm" onClick={() => {}}>
+          <Button
+            variant="destructive"
+            className="font-rub w-full text-sm"
+            size="sm"
+            onClick={() => {}}
+          >
+            <IoMdLogOut className="h-5 w-5 mr-1" />
             Logout
           </Button>
         </DropdownMenuItem>

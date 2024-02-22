@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useUser } from '../authentication/useUser';
+import { useCurrencies } from './useCurrencies';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -7,9 +11,24 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import SelectCategroy from '../category/SelectCategroy';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import { toast } from 'sonner';
 
 const UpdateCurrency = () => {
+  const { user } = useUser();
+  const [currency, setCurrency] = useState<string>(
+    user?.user_metadata?.currency ?? 'INR'
+  );
+  const { data: currencies } = useCurrencies();
+
   return (
     <Card className="font-rub">
       <CardHeader>
@@ -17,10 +36,28 @@ const UpdateCurrency = () => {
         <CardDescription>Update your currency.</CardDescription>
       </CardHeader>
       <CardContent>
-        <SelectCategroy />
+        <Select value={currency} onValueChange={value => setCurrency(value)}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {currencies?.map(currency => (
+                <>
+                  <SelectItem value={currency.key} key={currency.key}>
+                    {currency.key} - {currency.countryName}
+                  </SelectItem>
+                  <Separator className="my-1" />
+                </>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </CardContent>
       <CardFooter>
-        <Button>Update Currency</Button>
+        <Button onClick={() => toast.success('Currency updated successfully!')}>
+          Update Currency
+        </Button>
       </CardFooter>
     </Card>
   );
