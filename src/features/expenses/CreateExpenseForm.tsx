@@ -81,7 +81,6 @@ import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { CreateEditExpense } from '@/types/expense';
 import { expenseSchema } from '@/utils/validation/expense';
-import { useUser } from '../authentication/useUser';
 import {
   Popover,
   PopoverContent,
@@ -93,9 +92,10 @@ import { CalendarIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
+import { useCurrency } from '@/context/useCurrency';
 
 const CreateExpenseForm = () => {
-  const { user } = useUser();
+  const { currency } = useCurrency();
 
   const form = useForm<CreateEditExpense>({
     defaultValues: { date: new Date() },
@@ -146,12 +146,15 @@ const CreateExpenseForm = () => {
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <div className="flex items-center gap-1">
-                <p>{user?.user_metadata.currency || 'INR'}</p>
+                <p>{currency}</p>
                 <Separator orientation="vertical" />
                 <FormControl>
                   <Input placeholder="Enter amount" {...field} />
                 </FormControl>
               </div>
+              <FormDescription>
+                You can change the currency from Profile page.
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

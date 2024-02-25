@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -8,11 +8,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { FaTrashAlt } from 'react-icons/fa';
-import { FaPen } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
 import ConfirmDialogBox from '@/components/ConfirmDialogBox';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
+import { FaTrashAlt } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa6';
+import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
 export type Payment = {
   id: string;
@@ -62,7 +62,7 @@ export const columns: ColumnDef<Payment>[] = [
       const amount = parseFloat(row.getValue('amount'));
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'INR',
+        currency: 'EUR',
       }).format(amount);
 
       return <div className="text-right font-medium">{formatted}</div>;
