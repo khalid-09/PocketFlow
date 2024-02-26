@@ -21,10 +21,12 @@ export default function UserProfile() {
   const navigate = useNavigate();
   const { mutate: logout } = useLogout();
 
-  const fallBackName: string = user?.user_metadata?.full_name
-    .split(' ')
-    .map((n: string[]) => n[0])
-    .join('');
+  const fallBackName: string =
+    user?.user_metadata?.username ??
+    user?.user_metadata?.full_name
+      .split(' ')
+      .map((n: string[]) => n[0])
+      .join('');
 
   return (
     <DropdownMenu>

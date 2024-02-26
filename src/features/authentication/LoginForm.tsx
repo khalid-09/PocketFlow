@@ -18,7 +18,10 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<Login>({ resolver: zodResolver(loginSchema) });
+  } = useForm<Login>({
+    defaultValues: { email: 'jifibaj657@ebuthor.com', password: '1234qwer' },
+    resolver: zodResolver(loginSchema),
+  });
 
   const onSubmit = (data: Login) => {
     login(data);
