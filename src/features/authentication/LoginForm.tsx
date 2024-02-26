@@ -9,17 +9,19 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import Error from '@/components/Error';
+import { useLogin } from './useLogin';
 
 const LoginForm = () => {
+  const { mutate: login, isPending } = useLogin();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<Login>({ resolver: zodResolver(loginSchema) });
 
   const onSubmit = (data: Login) => {
-    console.log(data);
+    login(data);
     reset();
   };
 
@@ -47,7 +49,7 @@ const LoginForm = () => {
           {errors?.password && <Error>{errors?.password?.message}</Error>}
         </div>
         <Button className=" w-full mt-4">
-          {isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          {isPending && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
           Login
         </Button>
       </form>

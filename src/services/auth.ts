@@ -1,7 +1,19 @@
 import supabase from '@/lib/supabase';
-import { Signup } from '@/types/auth';
+import { Login, Signup } from '@/types/auth';
 
-const VITE_SUPABASE_OAUTH_REDIRECT_URL = 'http://localhost:5173/' as const;
+const VITE_SUPABASE_OAUTH_REDIRECT_URL =
+  'http://localhost:5173/dashboard' as const;
+
+export const login = async ({ email, password }: Login) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+};
 
 export const signUp = async ({ email, password, username }: Signup) => {
   const { data, error } = await supabase.auth.signUp({

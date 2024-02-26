@@ -1,12 +1,14 @@
 import { signUp } from '@/services/auth';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 export const useSignUp = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: signUp,
     retry: false,
-    onSuccess: data => console.log(data),
+    onSuccess: ({ user }) => queryClient.setQueryData(['user'], user),
     onError: error => toast.error(error?.message),
   });
 };
