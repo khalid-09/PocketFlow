@@ -14,10 +14,12 @@ import { RiMenu4Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa6';
 import { IoMdLogOut } from 'react-icons/io';
+import { useLogout } from '@/features/authentication/useLogout';
 
 export default function UserProfile() {
   const { user } = useUser();
   const navigate = useNavigate();
+  const { mutate: logout } = useLogout();
 
   const fallBackName: string = user?.user_metadata?.full_name
     .split(' ')
@@ -52,13 +54,12 @@ export default function UserProfile() {
             </Button>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        {/* <DropdownMenuSeparator /> */}
         <DropdownMenuItem>
           <Button
             variant="destructive"
             className="font-rub w-full text-sm"
             size="sm"
-            onClick={() => {}}
+            onClick={() => logout()}
           >
             <IoMdLogOut className="h-5 w-5 mr-1" />
             Logout

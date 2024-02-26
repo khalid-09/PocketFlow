@@ -9,7 +9,10 @@ export const getUser = async () => {
   } = await supabase.auth.getSession();
   if (!session) return null;
 
-  const { data: { user } = {}, error } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
   if (error) throw new Error(error.message);
 

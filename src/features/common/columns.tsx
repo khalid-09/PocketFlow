@@ -6,6 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import ConfirmDialogBox from '@/components/ConfirmDialogBox';
@@ -57,12 +58,12 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: 'amount',
-    header: () => <div className="text-right">Amount</div>,
+    header: () => <div className="text-right">Actions</div>,
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue('amount'));
       const formatted = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'EUR',
+        currency: 'INR',
       }).format(amount);
 
       return <div className="text-right font-medium">{formatted}</div>;
@@ -83,12 +84,11 @@ export const columns: ColumnDef<Payment>[] = [
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-center font-rub">
+                Actions
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
-                {/* <Button variant="ghost">
-                <FaTrashAlt className="mr-2 text-red-500" />
-                Delete
-              </Button> */}
                 <DialogTrigger className="flex items-center">
                   <FaTrashAlt className="mr-2 flex text-red-500" /> Delete
                 </DialogTrigger>

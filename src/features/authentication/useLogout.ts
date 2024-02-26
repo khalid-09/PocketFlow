@@ -1,9 +1,11 @@
 import { logout } from '@/services/auth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 export const useLogout = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   return useMutation({
     mutationFn: logout,
@@ -11,11 +13,10 @@ export const useLogout = () => {
     onSuccess: () => {
       queryClient.setQueryData(['user'], null);
       queryClient.removeQueries();
+      navigate('/login', { replace: true });
     },
     onError: () => {
-      toast('Scheduled: Catch up', {
-        description: 'Friday, February 10, 2023 at 5:57 PM',
-      });
+      toast.error('Error logging out. Please try again.');
     },
   });
 };

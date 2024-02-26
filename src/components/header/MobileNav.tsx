@@ -7,7 +7,6 @@ import {
   SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { useUser } from '@/features/authentication/useUser';
@@ -46,7 +45,6 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent className="font-rub w-[65%] flex flex-col">
         <SheetHeader>
-          <SheetTitle>Profile</SheetTitle>
           <SheetDescription>
             <Avatar className="flex items-center gap-3">
               <AvatarImage
