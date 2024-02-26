@@ -12,6 +12,7 @@ import {
 import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { RiMenu4Fill } from 'react-icons/ri';
+import { useLogout } from '@/features/authentication/useLogout';
 
 const navLinks = [
   {
@@ -35,6 +36,7 @@ const navLinks = [
 const MobileNav = () => {
   const { user } = useUser();
   const navigate = useNavigate();
+  const { mutate: logout } = useLogout();
 
   return (
     <Sheet>
@@ -70,7 +72,11 @@ const MobileNav = () => {
           </div>
           <SheetFooter className=" flex gap-2">
             <SheetClose asChild>
-              <Button variant="destructive" type="submit">
+              <Button
+                variant="destructive"
+                onClick={() => logout()}
+                type="submit"
+              >
                 Log Out
               </Button>
             </SheetClose>

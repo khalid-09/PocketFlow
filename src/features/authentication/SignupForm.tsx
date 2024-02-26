@@ -9,17 +9,19 @@ import { Label } from '@/components/ui/label';
 import { Link } from 'react-router-dom';
 import { Signup } from '@/types/auth';
 import { ReloadIcon } from '@radix-ui/react-icons';
+import { useSignUp } from './useSignUp';
 
 const SignupForm = () => {
+  const { mutate: signUp, isSuccess } = useSignUp();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm<Signup>({ resolver: zodResolver(signupSchema) });
 
   const onSubmit = (data: Signup) => {
-    console.log(data);
+    signUp(data);
     reset();
   };
 
@@ -69,7 +71,7 @@ const SignupForm = () => {
           )}
         </div>
         <Button className="w-full mt-4">
-          {isSubmitting && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          {isSuccess && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
           Sign Up
         </Button>
       </form>
