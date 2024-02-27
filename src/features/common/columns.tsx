@@ -18,16 +18,16 @@ import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 export type Payment = {
   id: string;
   amount: number;
-  status: 'pending' | 'processing' | 'success' | 'failed';
+  // status: 'pending' | 'processing' | 'success' | 'failed';
   title: string;
   date: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: 'status',
-    header: '',
-  },
+  // {
+  //   accessorKey: 'status',
+  //   header: '',
+  // },
   {
     accessorKey: 'title',
     header: ({ column }) => {

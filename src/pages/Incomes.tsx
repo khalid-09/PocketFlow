@@ -7,14 +7,12 @@ const data: Payment[] = [
   {
     id: '728ed52f',
     amount: 100,
-    status: 'pending',
     title: 'Savings Deposit',
     date: '02-01-2024',
   },
   {
     id: '728ed52a',
     amount: 101,
-    status: 'pending',
     title: 'Life Insurance',
     date: '03-01-2024',
   },
