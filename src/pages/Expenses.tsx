@@ -10,7 +10,7 @@ const Expenses = () => {
   const { data = [], isLoading } = useExpenses();
   const expenses = data as Payment[]; // as Payment[] is used to tell typescript that expenses is an array of Payment type, so that it doesn't throw error while accessing properties of Payment type like id, amount, title, date, et
 
-  if (isLoading) return toast.info('Loading expenses...');
+  if (isLoading) toast.info('Loading expenses...');
 
   return (
     <>

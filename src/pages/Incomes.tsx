@@ -1,24 +1,13 @@
 import CommonTable from '@/features/common/CommonTable';
 import Heading from '@/features/common/Heading';
 import { Payment, columns } from '@/features/common/columns';
+import { useIncomes } from '@/features/incomes/useIncomes';
 import { Helmet } from 'react-helmet-async';
 
-const data: Payment[] = [
-  {
-    id: '728ed52f',
-    amount: 100,
-    title: 'Savings Deposit',
-    date: '02-01-2024',
-  },
-  {
-    id: '728ed52a',
-    amount: 101,
-    title: 'Life Insurance',
-    date: '03-01-2024',
-  },
-];
-
 const Incomes = () => {
+  const { data = [], isLoading } = useIncomes();
+  const incomes = data as Payment[];
+
   return (
     <>
       <Helmet title="PocketFlow | Incomes" />
@@ -28,7 +17,7 @@ const Incomes = () => {
         </div> */}
         <section className="min-h-screen flex-1">
           <Heading type="income" title="Incomes" actionName="Add Income" />
-          <CommonTable columns={columns} data={data} />
+          <CommonTable columns={columns} data={incomes} />
         </section>
       </div>
     </>
