@@ -3,10 +3,13 @@ import Heading from '@/features/common/Heading';
 import { Payment, columns } from '@/features/common/columns';
 import { useIncomes } from '@/features/incomes/useIncomes';
 import { Helmet } from 'react-helmet-async';
+import { toast } from 'sonner';
 
 const Incomes = () => {
   const { data = [], isLoading } = useIncomes();
   const incomes = data as Payment[];
+
+  if (isLoading) toast.info('Loading incomes...');
 
   return (
     <>

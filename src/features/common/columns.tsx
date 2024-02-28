@@ -21,6 +21,7 @@ export type Payment = {
   // status: 'pending' | 'processing' | 'success' | 'failed';
   title: string;
   date: string;
+  type: 'income' | 'expense';
 };
 
 export const columns: ColumnDef<Payment>[] = [
@@ -72,7 +73,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     id: 'actions',
     cell: ({ row }) => {
-      const payment = row.original;
+      const expenseOrIncome = row.original;
 
       return (
         <Dialog>
@@ -94,13 +95,19 @@ export const columns: ColumnDef<Payment>[] = [
                 </DialogTrigger>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link to={`${payment.id}/edit`} className="flex items-center">
+                <Link
+                  to={`${expenseOrIncome.id}/edit`}
+                  className="flex items-center"
+                >
                   <FaPen className="mr-2 font-rub text-blue-500" /> Edit
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <ConfirmDialogBox />
+          <ConfirmDialogBox
+            type={expenseOrIncome.type}
+            id={expenseOrIncome.id}
+          />
         </Dialog>
       );
     },

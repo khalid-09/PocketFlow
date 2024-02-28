@@ -7,8 +7,23 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from './ui/button';
+import { useDeleteExpense } from '@/features/expenses/useDeleteExpense';
+import { useDelteIncome } from '@/features/incomes/useDeleteIncome';
 
-const ConfirmDialogBox = () => {
+type ConfirmDialogBoxProps = {
+  id: string;
+  type: string;
+};
+
+const ConfirmDialogBox = ({ id, type }: ConfirmDialogBoxProps) => {
+  const { mutate: deleteExpense } = useDeleteExpense();
+  const { mutate: deleteIncome } = useDelteIncome();
+
+  const handleClick = () => {
+    if (type === 'expense') deleteExpense(id);
+    if (type === 'income') deleteIncome(id);
+  };
+
   return (
     <>
       <DialogContent>
@@ -21,7 +36,7 @@ const ConfirmDialogBox = () => {
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="button" variant="destructive">
+            <Button type="button" onClick={handleClick} variant="destructive">
               Delete
             </Button>
           </DialogClose>

@@ -8,3 +8,9 @@ export const getIncomes = async () => {
 
   return incomes;
 };
+
+export const deleteIncome = async (id: string) => {
+  const { error } = await supabase.from('incomes').delete().eq('id', id);
+
+  if (error) toast.error(error.message);
+};
