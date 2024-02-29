@@ -5,6 +5,6 @@ export const useIncomes = () => {
   return useQuery({
     queryKey: ['incomes'],
     queryFn: getIncomes,
-    staleTime: Infinity,
+    staleTime: 0,
   });
 };

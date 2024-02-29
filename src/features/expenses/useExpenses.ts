@@ -5,6 +5,6 @@ export const useExpenses = () => {
   return useQuery({
     queryKey: ['expenses'],
     queryFn: getExpenses,
-    staleTime: Infinity,
+    staleTime: 0,
   });
 };

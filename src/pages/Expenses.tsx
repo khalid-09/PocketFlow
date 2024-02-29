@@ -9,6 +9,9 @@ import { toast } from 'sonner';
 const Expenses = () => {
   const { data = [], isLoading } = useExpenses();
   const expenses = data as Payment[]; // as Payment[] is used to tell typescript that expenses is an array of Payment type, so that it doesn't throw error while accessing properties of Payment type like id, amount, title, date, et
+  const rows = expenses.map(expense => {
+    return { ...expense, date: new Date(expense.date).toLocaleDateString() };
+  });
 
   if (isLoading) toast.info('Loading expenses...');
 
@@ -21,7 +24,7 @@ const Expenses = () => {
         </div> */}
         <section className="min-h-dvh">
           <Heading type="expense" title="Expenses" actionName="Add Expense" />
-          <CommonTable columns={columns} data={expenses} />
+          <CommonTable columns={columns} data={rows} />
         </section>
       </div>
     </>
