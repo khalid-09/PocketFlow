@@ -8,9 +8,6 @@ import { toast } from 'sonner';
 const Incomes = () => {
   const { data = [], isLoading } = useIncomes();
   const incomes = data as Payment[];
-  // const rows = incomes.map(income => {
-  //   return { ...income, date: new Date(income.date).toLocaleDateString() };
-  // });
 
   if (isLoading) toast.info('Loading incomes...');
 

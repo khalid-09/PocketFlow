@@ -1,4 +1,5 @@
 import supabase from '@/lib/supabase';
+import { CreateEditIncome } from '@/types/income';
 import { toast } from 'sonner';
 
 export const getIncomes = async () => {
@@ -13,4 +14,21 @@ export const deleteIncome = async (id: string) => {
   const { error } = await supabase.from('incomes').delete().eq('id', id);
 
   if (error) toast.error(error.message);
+};
+
+export const createIncome = async (income: CreateEditIncome) => {
+  const { data, error } = await supabase
+    .from('incomes')
+    .insert([
+      {
+        ...income,
+        amount: +income.amount,
+        date: income.date.toLocaleDateString(),
+      },
+    ])
+    .select();
+
+  if (error) toast.error(error.message);
+
+  return data;
 };

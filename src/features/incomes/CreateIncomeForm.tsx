@@ -78,9 +78,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { toast } from 'sonner';
-import { CreateEditExpense } from '@/types/expense';
-import { expenseSchema } from '@/utils/validation/expense';
 import {
   Popover,
   PopoverContent,
@@ -88,36 +85,26 @@ import {
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
-import { CalendarIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { useCurrency } from '@/context/useCurrency';
+import { CreateEditIncome } from '@/types/income';
+import { incomeSchema } from '@/utils/validation/income';
+import { useCreateIncome } from './useCreateIncome';
 
 const CreateIncomeForm = () => {
   const { currency } = useCurrency();
+  const { mutate: createIncome, isPending } = useCreateIncome();
 
-  const form = useForm<CreateEditExpense>({
+  const form = useForm<CreateEditIncome>({
     defaultValues: { date: new Date() },
-    resolver: zodResolver(expenseSchema),
+    resolver: zodResolver(incomeSchema),
   });
 
-  const onSubmit = (data: CreateEditExpense) => {
-    toast.success('You submitted the following values:', {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-    form.reset({
-      title: '',
-      amount: '',
-      date: new Date(),
-      category: '',
-      description: '',
-    });
-    console.log({ ...data, date: data.date.toLocaleDateString() });
+  const onSubmit = (data: CreateEditIncome) => {
+    createIncome(data);
   };
 
   return (
@@ -240,7 +227,10 @@ const CreateIncomeForm = () => {
             </FormItem>
           )}
         /> */}
-        <Button type="submit">Create</Button>
+        <Button disabled={isPending} type="submit">
+          {isPending && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          Create
+        </Button>
       </form>
     </Form>
   );
