@@ -1,4 +1,5 @@
 import supabase from '@/lib/supabase';
+import { CreateEditExpense } from '@/types/expense';
 import { toast } from 'sonner';
 
 export const getExpenses = async () => {
@@ -13,4 +14,21 @@ export const deleteExpense = async (id: string) => {
   const { error } = await supabase.from('expenses').delete().eq('id', id);
 
   if (error) toast.error(error.message);
+};
+
+export const createExpense = async (expense: CreateEditExpense) => {
+  const { data, error } = await supabase
+    .from('expenses')
+    .insert([
+      {
+        ...expense,
+        amount: +expense.amount,
+        date: expense.date.toLocaleDateString(),
+      },
+    ])
+    .select();
+
+  if (error) toast.error(error.message);
+
+  return data;
 };

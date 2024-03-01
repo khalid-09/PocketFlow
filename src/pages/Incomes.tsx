@@ -8,9 +8,9 @@ import { toast } from 'sonner';
 const Incomes = () => {
   const { data = [], isLoading } = useIncomes();
   const incomes = data as Payment[];
-  const rows = incomes.map(income => {
-    return { ...income, date: new Date(income.date).toLocaleDateString() };
-  });
+  // const rows = incomes.map(income => {
+  //   return { ...income, date: new Date(income.date).toLocaleDateString() };
+  // });
 
   if (isLoading) toast.info('Loading incomes...');
 
@@ -23,7 +23,7 @@ const Incomes = () => {
         </div> */}
         <section className="min-h-screen flex-1">
           <Heading type="income" title="Incomes" actionName="Add Income" />
-          <CommonTable columns={columns} data={rows} />
+          <CommonTable columns={columns} data={incomes} />
         </section>
       </div>
     </>
