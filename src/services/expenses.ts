@@ -32,3 +32,23 @@ export const createExpense = async (expense: CreateEditExpense) => {
 
   return data;
 };
+
+export const editExpense = async ({
+  id,
+  expense,
+}: {
+  id: string;
+  expense: CreateEditExpense;
+}) => {
+  const { error } = await supabase
+    .from('expenses')
+    .update({
+      ...expense,
+      amount: +expense.amount,
+      date: expense.date.toLocaleDateString(),
+    })
+    .eq('id', id)
+    .select();
+
+  if (error) toast.error(error.message);
+};

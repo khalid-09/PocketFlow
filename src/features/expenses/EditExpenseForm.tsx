@@ -23,21 +23,29 @@ import {
 } from '@/components/ui/popover';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { CalendarIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
+import { useEditExpense } from './useEditExpense';
 
 const EditExpenseForm = () => {
   const location = useLocation();
   const expenseData = location.state;
-  console.log(expenseData);
+  const { mutate: editExpense, isPending } = useEditExpense();
 
   const form = useForm<CreateEditExpense>({
     resolver: zodResolver(expenseSchema),
+    defaultValues: {
+      title: expenseData.title,
+      amount: String(expenseData.amount),
+      date: new Date(expenseData.date),
+      category: expenseData.category,
+      description: expenseData.description,
+    },
   });
 
-  const onSubmit = (data: CreateEditExpense) => {
-    console.log(data);
+  const onSubmit = (expense: CreateEditExpense) => {
+    editExpense({ id: expenseData.id, expense });
   };
 
   return (
@@ -160,7 +168,10 @@ const EditExpenseForm = () => {
         </FormItem>
       )}
     /> */}
-        <Button type="submit">Save Changes</Button>
+        <Button type="submit" disabled={isPending}>
+          {isPending && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          Save Changes
+        </Button>
       </form>
     </Form>
   );

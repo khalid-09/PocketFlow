@@ -98,6 +98,7 @@ export const columns: ColumnDef<Payment>[] = [
                 <Link
                   to={`${expenseOrIncome.id}/edit`}
                   className="flex items-center"
+                  state={expenseOrIncome}
                 >
                   <FaPen className="mr-2 font-rub text-blue-500" /> Edit
                 </Link>
