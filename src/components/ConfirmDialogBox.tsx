@@ -26,12 +26,12 @@ const ConfirmDialogBox = ({ id, type }: ConfirmDialogBoxProps) => {
 
   return (
     <>
-      <DialogContent>
+      <DialogContent className="font-rub">
         <DialogHeader>
           <DialogTitle>Are you absolutely sure?</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your this
+            row and remove your data from our servers.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

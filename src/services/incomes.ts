@@ -32,3 +32,23 @@ export const createIncome = async (income: CreateEditIncome) => {
 
   return data;
 };
+
+export const editIncome = async ({
+  id,
+  income,
+}: {
+  id: string;
+  income: CreateEditIncome;
+}) => {
+  const { error } = await supabase
+    .from('incomes')
+    .update({
+      ...income,
+      amount: +income.amount,
+      date: income.date.toLocaleDateString(),
+    })
+    .eq('id', id)
+    .select();
+
+  if (error) toast.error(error.message);
+};
