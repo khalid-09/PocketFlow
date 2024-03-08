@@ -30,7 +30,7 @@ export default function UserProfile() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger className="hover:cursor-pointer" asChild>
         <Avatar className="flex items-center gap-2 font-rub text-sm">
           <AvatarImage
             className="h-8 rounded-full"

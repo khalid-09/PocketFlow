@@ -10,7 +10,6 @@ const Incomes = () => {
   const incomes = data as Payment[];
 
   if (isLoading) toast.info('Loading incomes...');
-
   return (
     <>
       <Helmet title="PocketFlow | Incomes" />

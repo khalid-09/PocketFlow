@@ -1,4 +1,8 @@
+import { useUser } from '@/features/authentication/useUser';
+import { useLogout } from '@/features/authentication/useLogout';
+
 import { Link, useNavigate } from 'react-router-dom';
+
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -9,10 +13,8 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { useUser } from '@/features/authentication/useUser';
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
 import { RiMenu4Fill } from 'react-icons/ri';
-import { useLogout } from '@/features/authentication/useLogout';
 
 const navLinks = [
   {

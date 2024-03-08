@@ -5,13 +5,20 @@ import Heading from '@/features/common/Heading';
 import CommonTable from '@/features/common/CommonTable';
 import { useExpenses } from '@/features/expenses/useExpenses';
 import { toast } from 'sonner';
+import SelectCategory from '@/components/SelectCategory';
 
 const Expenses = () => {
   const { data = [], isLoading } = useExpenses();
-  const expenses = data as Payment[]; // as Payment[] is used to tell typescript that expenses is an array of Payment type, so that it doesn't throw error while accessing properties of Payment type like id, amount, title, date, et
+  const finalData = data?.map(item => {
+    return {
+      ...item,
+      itemIcon: <SelectCategory categoryKey="food" />,
+    };
+  });
+  console.log(finalData);
+  const expenses = data as Payment[]; // as Payment[] is used to tell typescript that expenses is an array of Payment type, so that it doesn't throw error while accessing properties of Payment type like id, amount, title, date, etc
 
-  if (isLoading) toast.info('Loading expenses...');
-
+  if (isLoading) toast.info('Loading expenses');
   return (
     <>
       <Helmet title="PocketFlow | Expenses" />
