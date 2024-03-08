@@ -18,7 +18,7 @@ const Profile = () => {
         <div className="space-y-4">
           <UpdateProfileImage />
           <UpdateCurrency />
-          {!user?.app_metadata?.provider && <UpdatePassword />}
+          {user?.app_metadata?.provider === 'email' && <UpdatePassword />}
         </div>
       </div>
     </>

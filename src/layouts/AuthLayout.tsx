@@ -3,6 +3,7 @@ import { signInWithGithub, signInWithGoogle } from '@/services/auth';
 import { useUser } from '@/features/authentication/useUser';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const AuthLayout = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const AuthLayout = () => {
               <Button
                 variant="outline"
                 onClick={() => {
+                  toast.loading('Signing in with Google');
                   console.log('signing in with google');
                   signInWithGoogle();
                 }}
@@ -40,6 +42,7 @@ const AuthLayout = () => {
               </Button>
               <Button
                 onClick={() => {
+                  toast.loading('Signing in with Github');
                   console.log('signing in with github');
                   signInWithGithub();
                 }}
