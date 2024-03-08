@@ -64,10 +64,23 @@
 
 // export default CreateExpenseForm;
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { expenseSchema } from '@/utils/validation/expense';
+import { useCurrency } from '@/context/useCurrency';
+import { useCreateExpense } from './useCreateExpense';
+
+import { CreateEditExpense } from '@/types/expense';
+import { categories } from '@/utils/constansts';
+import { cn } from '@/lib/utils';
+import { format } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Calendar } from '@/components/ui/calendar';
+import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
+import SelectCategory from '@/components/SelectCategory';
 import {
   Form,
   FormControl,
@@ -77,22 +90,20 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { CreateEditExpense } from '@/types/expense';
-import { expenseSchema } from '@/utils/validation/expense';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
 import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
-import { Calendar } from '@/components/ui/calendar';
-import { Separator } from '@/components/ui/separator';
-import { Textarea } from '@/components/ui/textarea';
-import { useCurrency } from '@/context/useCurrency';
-import { useCreateExpense } from './useCreateExpense';
 
 const CreateExpenseForm = () => {
   const { currency } = useCurrency();
@@ -194,9 +205,26 @@ const CreateExpenseForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Category</FormLabel>
-              <FormControl>
-                <Input placeholder="Type..." {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-[280px] h-12">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {categories.map(category => (
+                    <div>
+                      <SelectItem value={category.key} className="flex">
+                        <div className="flex items-center">
+                          <SelectCategory categoryKey={category.key} />{' '}
+                          <span>{category.category}</span>
+                        </div>
+                      </SelectItem>
+                      <Separator className="my-1" />
+                    </div>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

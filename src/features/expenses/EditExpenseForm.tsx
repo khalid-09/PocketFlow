@@ -27,6 +27,15 @@ import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { useEditExpense } from './useEditExpense';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { categories } from '@/utils/constansts';
+import SelectCategory from '@/components/SelectCategory';
 
 const EditExpenseForm = () => {
   const location = useLocation();
@@ -135,9 +144,26 @@ const EditExpenseForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Category</FormLabel>
-              <FormControl>
-                <Input placeholder="Type..." {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-[280px] h-12">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {categories.map(category => (
+                    <div>
+                      <SelectItem value={category.key} className="flex">
+                        <div className="flex items-center">
+                          <SelectCategory categoryKey={category.key} />{' '}
+                          <span>{category.category}</span>
+                        </div>
+                      </SelectItem>
+                      <Separator className="my-1" />
+                    </div>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

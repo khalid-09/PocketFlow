@@ -21,12 +21,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { useEditIncome } from './useEditIncome';
+import { incomeCategories } from '@/utils/constansts';
+import SelectCategory from '@/components/SelectCategory';
 
 const EditIncomeForm = () => {
   const location = useLocation();
@@ -135,9 +144,29 @@ const EditIncomeForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Category</FormLabel>
-              <FormControl>
-                <Input placeholder="Type..." {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-[280px] h-12">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {incomeCategories.map(category => (
+                    <div>
+                      <SelectItem value={category.key} className="flex">
+                        <div className="flex items-center">
+                          <SelectCategory
+                            type="income"
+                            categoryKey={category.key}
+                          />{' '}
+                          <span>{category.category}</span>
+                        </div>
+                      </SelectItem>
+                      <Separator className="my-1" />
+                    </div>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

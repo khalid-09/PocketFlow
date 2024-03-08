@@ -2,7 +2,6 @@ import SelectCategory from '@/components/SelectCategory';
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -19,19 +18,17 @@ const SelectCategroy = () => {
         <SelectValue placeholder="Select category" />
       </SelectTrigger>
       <SelectContent>
-        <SelectGroup>
-          {seletectCategory.map(category => (
-            <div>
-              <SelectItem value={category.key} className="flex">
-                <div className="flex items-center">
-                  <SelectCategory categoryKey={category.key} />{' '}
-                  <span>{category.category}</span>
-                </div>
-              </SelectItem>
-              <Separator className="my-1" />
-            </div>
-          ))}
-        </SelectGroup>
+        {seletectCategory.map(category => (
+          <div>
+            <SelectItem value={category.key} key={category.id}>
+              <div className="flex items-center">
+                <SelectCategory categoryKey={category.key} />{' '}
+                <span>{category.category}</span>
+              </div>
+            </SelectItem>
+            <Separator className="my-1" />
+          </div>
+        ))}
       </SelectContent>
     </Select>
   );
