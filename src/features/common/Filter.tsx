@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 
 import DateRangePicker from '../dashboard/DateRangePicker';
-import SelectCategroy from '../category/SelectCategroy';
+import SelectCategroy from '../category/SelectCategory';
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -40,20 +40,17 @@ const Filter = ({ onMobile, table }: FilterProps) => {
           />
         </div>
         <div className="space-y-1">
-          <Label>Filter by Minimum amount</Label>
-          <Input />
-        </div>
-        <div className="space-y-1">
-          <Label>Filter by Maximum amount</Label>
-          <Input />
+          <Label>Filter by amount</Label>
+          <Input
+            value={
+              (table.getColumn('amount')?.getFilterValue() as number) ?? ''
+            }
+            onChange={event => console.log(+event.target.value)}
+          />
         </div>
         <div className="space-y-1">
           <Label>Filter by Category</Label>
           <SelectCategroy />
-        </div>
-        <div className="space-y-1">
-          <Label>Tag</Label>
-          <Input />
         </div>
         <div className={`${onMobile ? 'hidden' : ''}`}>
           <Button>Filter</Button>

@@ -67,7 +67,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { incomeCategories } from '@/utils/constansts';
-import SelectCategory from '@/components/SelectCategory';
+import CategoryIcon from '@/components/CategoryIcon';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -98,13 +98,13 @@ import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { Calendar } from '@/components/ui/calendar';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
-import { useCurrency } from '@/context/useCurrency';
 import { CreateEditIncome } from '@/types/income';
 import { incomeSchema } from '@/utils/validation/income';
 import { useCreateIncome } from './useCreateIncome';
+import { useUser } from '../authentication/useUser';
 
 const CreateIncomeForm = () => {
-  const { currency } = useCurrency();
+  const { user } = useUser();
   const { mutate: createIncome, isPending } = useCreateIncome();
 
   const form = useForm<CreateEditIncome>({
@@ -142,7 +142,7 @@ const CreateIncomeForm = () => {
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <div className="flex items-center gap-1">
-                <p>{currency}</p>
+                <p>{user?.user_metadata.currency ?? 'INR'}</p>
                 <Separator orientation="vertical" />
                 <FormControl>
                   <Input placeholder="Enter amount" {...field} />
@@ -211,10 +211,10 @@ const CreateIncomeForm = () => {
                 </FormControl>
                 <SelectContent>
                   {incomeCategories.map(category => (
-                    <div>
+                    <div key={category.id}>
                       <SelectItem value={category.key} className="flex">
                         <div className="flex items-center">
-                          <SelectCategory
+                          <CategoryIcon
                             type="income"
                             categoryKey={category.key}
                           />{' '}

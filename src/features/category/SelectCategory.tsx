@@ -1,4 +1,4 @@
-import SelectCategory from '@/components/SelectCategory';
+import CategoryIcon from '@/components/CategoryIcon';
 import {
   Select,
   SelectContent,
@@ -9,7 +9,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { categories } from '@/utils/constansts';
 
-const SelectCategroy = () => {
+const SelectCategory = () => {
   const seletectCategory = categories;
 
   return (
@@ -19,10 +19,10 @@ const SelectCategroy = () => {
       </SelectTrigger>
       <SelectContent>
         {seletectCategory.map(category => (
-          <div>
-            <SelectItem value={category.key} key={category.id}>
+          <div key={category.id}>
+            <SelectItem value={category.key}>
               <div className="flex items-center">
-                <SelectCategory categoryKey={category.key} />{' '}
+                <CategoryIcon categoryKey={category.key} />{' '}
                 <span>{category.category}</span>
               </div>
             </SelectItem>
@@ -34,4 +34,4 @@ const SelectCategroy = () => {
   );
 };
 
-export default SelectCategroy;
+export default SelectCategory;

@@ -1,12 +1,12 @@
 import { categories, incomeCategories } from '@/utils/constansts';
 
-interface SelectCategoryProps {
+type SelectCategoryProps = {
   categoryKey: string;
   variant?: 'category' | 'selectCategory';
   type?: 'expense' | 'income';
-}
+};
 
-const SelectCategory = ({
+const CategoryIcon = ({
   categoryKey,
   variant = 'selectCategory',
   type = 'expense',
@@ -33,4 +33,4 @@ const SelectCategory = ({
   );
 };
 
-export default SelectCategory;
+export default CategoryIcon;

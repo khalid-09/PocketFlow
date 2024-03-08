@@ -1,3 +1,6 @@
+import supabase from '@/lib/supabase';
+import { toast } from 'sonner';
+
 export const getCurrencies = async () => {
   const res = await fetch('https://openexchangerates.org/api/currencies.json');
 
@@ -12,4 +15,14 @@ export const getCurrencies = async () => {
   }));
 
   return currencies;
+};
+
+export const updateCurrency = async ({ currency }: { currency: string }) => {
+  const { data, error } = await supabase.auth.updateUser({
+    data: { currency },
+  });
+
+  if (error) toast.error('An error occurred while updating your currency');
+  console.log(data);
+  return data.user;
 };

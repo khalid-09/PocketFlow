@@ -35,7 +35,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { categories } from '@/utils/constansts';
-import SelectCategory from '@/components/SelectCategory';
+import CategoryIcon from '@/components/CategoryIcon';
 
 const EditExpenseForm = () => {
   const location = useLocation();
@@ -152,10 +152,10 @@ const EditExpenseForm = () => {
                 </FormControl>
                 <SelectContent>
                   {categories.map(category => (
-                    <div>
+                    <div key={category.id}>
                       <SelectItem value={category.key} className="flex">
                         <div className="flex items-center">
-                          <SelectCategory categoryKey={category.key} />{' '}
+                          <CategoryIcon categoryKey={category.key} />{' '}
                           <span>{category.category}</span>
                         </div>
                       </SelectItem>

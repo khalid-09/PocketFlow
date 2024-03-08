@@ -35,7 +35,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { useEditIncome } from './useEditIncome';
 import { incomeCategories } from '@/utils/constansts';
-import SelectCategory from '@/components/SelectCategory';
+import CategoryIcon from '@/components/CategoryIcon';
 
 const EditIncomeForm = () => {
   const location = useLocation();
@@ -152,10 +152,10 @@ const EditIncomeForm = () => {
                 </FormControl>
                 <SelectContent>
                   {incomeCategories.map(category => (
-                    <div>
+                    <div key={category.id}>
                       <SelectItem value={category.key} className="flex">
                         <div className="flex items-center">
-                          <SelectCategory
+                          <CategoryIcon
                             type="income"
                             categoryKey={category.key}
                           />{' '}

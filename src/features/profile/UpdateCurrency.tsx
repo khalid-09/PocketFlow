@@ -1,7 +1,11 @@
+import { useState } from 'react';
+import { useUser } from '../authentication/useUser';
 import { useCurrencies } from './useCurrencies';
-import { useCurrency } from '@/context/useCurrency';
+import { useUpdateCurrency } from './useUpdateCurrency';
 
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { toast } from 'sonner';
 import {
   Card,
   CardContent,
@@ -18,12 +22,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
-import { toast } from 'sonner';
+
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const UpdateCurrency = () => {
-  const { currency, setCurrency } = useCurrency();
+  const { user } = useUser();
+  const [currency, setCurrency] = useState<string>(
+    user?.user_metadata.currency ?? 'INR'
+  );
   const { data: currencies } = useCurrencies();
+  const { mutate: updateCurrency, isPending: isUpdating } = useUpdateCurrency();
+
+  const handleClick = () => {
+    if (!currency) {
+      toast.error('Please select a currency');
+      return;
+    }
+    updateCurrency({ currency });
+  };
 
   return (
     <Card className="font-rub">
@@ -51,12 +67,14 @@ const UpdateCurrency = () => {
         </Select>
       </CardContent>
       <CardFooter>
-        <Button
-          onClick={() =>
-            toast.success(`Currency updated successfully! ${currency}`)
-          }
-        >
-          Update Currency
+        <Button onClick={handleClick}>
+          {isUpdating ? (
+            <>
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" /> Updating...
+            </>
+          ) : (
+            <span>Update Currency</span>
+          )}
         </Button>
       </CardFooter>
     </Card>

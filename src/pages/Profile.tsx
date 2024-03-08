@@ -1,9 +1,12 @@
+import { useUser } from '@/features/authentication/useUser';
 import UpdateCurrency from '@/features/profile/UpdateCurrency';
 import UpdatePassword from '@/features/profile/UpdatePassword';
 import UpdateProfileImage from '@/features/profile/UpdateProfileImage';
 import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
+  const { user } = useUser();
+
   return (
     <>
       <Helmet title="Pocket Flow | Profile" />
@@ -15,7 +18,7 @@ const Profile = () => {
         <div className="space-y-4">
           <UpdateProfileImage />
           <UpdateCurrency />
-          <UpdatePassword />
+          {!user?.app_metadata?.provider && <UpdatePassword />}
         </div>
       </div>
     </>

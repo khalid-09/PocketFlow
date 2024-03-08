@@ -67,7 +67,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { expenseSchema } from '@/utils/validation/expense';
-import { useCurrency } from '@/context/useCurrency';
+import { useUser } from '../authentication/useUser';
 import { useCreateExpense } from './useCreateExpense';
 
 import { CreateEditExpense } from '@/types/expense';
@@ -80,7 +80,7 @@ import { Input } from '@/components/ui/input';
 import { Calendar } from '@/components/ui/calendar';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
-import SelectCategory from '@/components/SelectCategory';
+import CategoryIcon from '@/components/CategoryIcon';
 import {
   Form,
   FormControl,
@@ -106,7 +106,7 @@ import {
 import { CalendarIcon, ReloadIcon } from '@radix-ui/react-icons';
 
 const CreateExpenseForm = () => {
-  const { currency } = useCurrency();
+  const { user } = useUser();
   const { mutate: createExpense, isPending } = useCreateExpense();
 
   const form = useForm<CreateEditExpense>({
@@ -144,7 +144,7 @@ const CreateExpenseForm = () => {
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <div className="flex items-center gap-1">
-                <p>{currency}</p>
+                <p>{user?.user_metadata.currency ?? 'INR'}</p>
                 <Separator orientation="vertical" />
                 <FormControl>
                   <Input placeholder="Enter amount" {...field} />
@@ -213,10 +213,10 @@ const CreateExpenseForm = () => {
                 </FormControl>
                 <SelectContent>
                   {categories.map(category => (
-                    <div>
+                    <div key={category.id}>
                       <SelectItem value={category.key} className="flex">
                         <div className="flex items-center">
-                          <SelectCategory categoryKey={category.key} />{' '}
+                          <CategoryIcon categoryKey={category.key} />{' '}
                           <span>{category.category}</span>
                         </div>
                       </SelectItem>

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-// import MobileFilter from './MobileFilter';
 import { Button } from '@/components/ui/button';
 import { MdAddTask, MdOutlineAddToPhotos } from 'react-icons/md';
 import {
