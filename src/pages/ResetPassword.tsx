@@ -8,8 +8,11 @@ import { Label } from '@/components/ui/label';
 import { Helmet } from 'react-helmet-async';
 import { forgotPasswordSchema } from '@/utils/validation/auth';
 import Error from '@/components/Error';
+import { useResetPassword } from '@/features/authentication/useResetPassword';
 
 const ResetPassword = () => {
+  const { mutate: resetPassword } = useResetPassword();
+
   const {
     register,
     handleSubmit,
@@ -18,8 +21,7 @@ const ResetPassword = () => {
   } = useForm<ForgotPassword>({ resolver: zodResolver(forgotPasswordSchema) });
 
   const onSubmit = (data: ForgotPassword) => {
-    console.log(data);
-    reset();
+    resetPassword({ email: data.email }, { onSuccess: () => reset() });
   };
 
   return (

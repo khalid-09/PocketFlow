@@ -44,7 +44,7 @@ const Overview = () => {
           </TabsList>
           <div className="flex justify-between p-3">
             <CardDescription>Category</CardDescription>
-            <CardDescription>Total</CardDescription>
+            <CardDescription>Amount</CardDescription>
           </div>
           <TabsContent value="account" className="font-rub p-3">
             <div className="space-y-3">

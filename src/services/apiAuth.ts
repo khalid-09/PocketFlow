@@ -1,5 +1,6 @@
 import supabase from '@/lib/supabase';
 import { Login, Signup } from '@/types/auth';
+import { toast } from 'sonner';
 
 const VITE_SUPABASE_OAUTH_REDIRECT_URL =
   'http://localhost:5173/dashboard' as const;
@@ -10,7 +11,7 @@ export const login = async ({ email, password }: Login) => {
     password,
   });
 
-  if (error) throw new Error(error.message);
+  if (error) toast.error(error.message);
 
   return data;
 };
@@ -27,7 +28,7 @@ export const signUp = async ({ email, password, username }: Signup) => {
     },
   });
 
-  if (error) throw new Error(error.message);
+  if (error) toast.error(error.message);
 
   return data;
 };
@@ -44,7 +45,7 @@ export const getUser = async () => {
     error,
   } = await supabase.auth.getUser();
 
-  if (error) throw new Error(error.message);
+  if (error) toast.error(error.message);
 
   return user;
 };
@@ -70,5 +71,13 @@ export const signInWithGithub = () => {
 export const logout = async () => {
   const { error } = await supabase.auth.signOut();
 
-  if (error) throw new Error(error.message);
+  if (error) toast.error(error.message);
+};
+
+export const resetPassword = async ({ email }: { email: string }) => {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+
+  if (error) toast.error(error.message);
+
+  return data;
 };

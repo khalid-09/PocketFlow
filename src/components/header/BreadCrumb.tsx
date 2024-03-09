@@ -20,7 +20,7 @@ const BreadCrumb = () => {
     pathname.split('/').includes('edit');
 
   return (
-    <Breadcrumb className="font-rub lg:hidden block">
+    <Breadcrumb className="font-rub sm:hidden font-medium block">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
