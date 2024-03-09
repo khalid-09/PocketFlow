@@ -1,4 +1,4 @@
-import { getIncomes } from '@/services/incomes';
+import { getIncomes } from '@/services/apiIncomes';
 import { useQuery } from '@tanstack/react-query';
 
 export const useIncomes = () => {

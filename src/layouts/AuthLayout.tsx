@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { signInWithGithub, signInWithGoogle } from '@/services/auth';
+import { signInWithGithub, signInWithGoogle } from '@/services/apiAuth';
 import { useUser } from '@/features/authentication/useUser';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';

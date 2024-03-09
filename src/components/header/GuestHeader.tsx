@@ -8,7 +8,7 @@ const GuestHeader = () => {
   const { user, isAuthenticated } = useUser();
 
   return (
-    <header className="justify-between p-6 flex shadow-sm backdrop-blur h-18 gap-2 font-rub w-full fixed inset-x-0 left-0 top-0 z-10 ">
+    <header className="justify-between px-6 py-4 flex shadow-sm backdrop-blur h-16 gap-2 font-rub w-full fixed inset-x-0 left-0 top-0 z-10 ">
       <Link to="/">
         <Radar className="text-red-500/80 w-8 h-8" />
       </Link>

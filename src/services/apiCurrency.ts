@@ -22,7 +22,7 @@ export const updateCurrency = async ({ currency }: { currency: string }) => {
     data: { currency },
   });
 
-  if (error) toast.error('An error occurred while updating your currency');
-  console.log(data);
+  if (error) toast.error(error.message);
+
   return data.user;
 };

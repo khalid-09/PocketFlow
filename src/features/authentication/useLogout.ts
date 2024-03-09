@@ -1,4 +1,4 @@
-import { logout } from '@/services/auth';
+import { logout } from '@/services/apiAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';

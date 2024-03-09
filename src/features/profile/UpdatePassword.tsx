@@ -14,9 +14,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Error from '@/components/Error';
-import { toast } from 'sonner';
+import { useUpdatePassowrd } from './useUpdatePassword';
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const UpdatePassword = () => {
+  const { mutate: updatePassword, isPending: isUpdating } = useUpdatePassowrd();
+
   const {
     register,
     formState: { errors },
@@ -28,8 +31,7 @@ const UpdatePassword = () => {
   });
 
   const onSubmit = (data: UpdatePass) => {
-    console.log(data);
-    toast.success('Password updated successfully');
+    updatePassword({ password: data.newPassword });
     reset();
   };
 
@@ -45,7 +47,7 @@ const UpdatePassword = () => {
             <Input
               type="password"
               id="password"
-              placeholder="Password"
+              placeholder="New Password"
               {...register('newPassword')}
             />
             {errors?.newPassword && (
@@ -65,7 +67,10 @@ const UpdatePassword = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button>Update Password</Button>
+          <Button>
+            {isUpdating && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+            {isUpdating ? 'Updating...' : 'Update Password'}
+          </Button>
         </CardFooter>
       </form>
     </Card>

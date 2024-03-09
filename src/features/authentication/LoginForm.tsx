@@ -12,14 +12,14 @@ import Error from '@/components/Error';
 import { useLogin } from './useLogin';
 
 const LoginForm = () => {
-  const { mutate: login, isPending } = useLogin();
+  const { mutate: login, isPending: isLogging } = useLogin();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<Login>({
-    defaultValues: { email: 'jifibaj657@ebuthor.com', password: '1234qwer' },
+    defaultValues: { email: 'jifibaj657@ebuthor.com', password: 'qwer1234' },
     resolver: zodResolver(loginSchema),
   });
 
@@ -52,8 +52,8 @@ const LoginForm = () => {
           {errors?.password && <Error>{errors?.password?.message}</Error>}
         </div>
         <Button className=" w-full mt-4">
-          {isPending && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
-          Login
+          {isLogging && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          {isLogging ? 'Logging In..' : 'Login'}
         </Button>
       </form>
       <div className="flex items-center text-sm mt-4">

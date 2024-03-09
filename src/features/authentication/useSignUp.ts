@@ -1,4 +1,4 @@
-import { signUp } from '@/services/auth';
+import { signUp } from '@/services/apiAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

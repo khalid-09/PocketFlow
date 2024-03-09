@@ -1,4 +1,4 @@
-import { editExpense } from '@/services/expenses';
+import { editExpense } from '@/services/apiExpenses';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';

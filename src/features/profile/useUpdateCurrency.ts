@@ -1,4 +1,4 @@
-import { updateCurrency } from '@/services/currency';
+import { updateCurrency } from '@/services/apiCurrency';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

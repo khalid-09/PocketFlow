@@ -1,4 +1,4 @@
-import { deleteExpense } from '@/services/expenses';
+import { deleteExpense } from '@/services/apiExpenses';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

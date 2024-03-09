@@ -1,4 +1,4 @@
-import { login } from '@/services/auth';
+import { login } from '@/services/apiAuth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 

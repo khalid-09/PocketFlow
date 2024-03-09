@@ -1,4 +1,4 @@
-import { getExpenses } from '@/services/expenses';
+import { getExpenses } from '@/services/apiExpenses';
 import { useQuery } from '@tanstack/react-query';
 
 export const useExpenses = () => {

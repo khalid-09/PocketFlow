@@ -1,4 +1,4 @@
-import { createIncome } from '@/services/incomes';
+import { createIncome } from '@/services/apiIncomes';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';

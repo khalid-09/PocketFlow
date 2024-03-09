@@ -12,7 +12,7 @@ import { ReloadIcon } from '@radix-ui/react-icons';
 import { useSignUp } from './useSignUp';
 
 const SignupForm = () => {
-  const { mutate: signUp, isPending } = useSignUp();
+  const { mutate: signUp, isPending: isSigningUp } = useSignUp();
   const {
     register,
     handleSubmit,
@@ -71,8 +71,8 @@ const SignupForm = () => {
           )}
         </div>
         <Button className="w-full mt-4">
-          {isPending && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
-          Sign Up
+          {isSigningUp && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{' '}
+          {isSigningUp ? 'Signing Up..' : 'Sign Up'}
         </Button>
       </form>
       <div className="flex items-center text-sm mt-4">
