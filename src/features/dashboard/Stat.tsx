@@ -2,11 +2,11 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { FaArrowTrendDown, FaArrowTrendUp } from 'react-icons/fa6';
+import { useUser } from '../authentication/useUser';
 
 type StatPorps = {
   current: number;
@@ -15,11 +15,19 @@ type StatPorps = {
 };
 
 const Stat = ({ current, prev, label }: StatPorps) => {
+  const { user } = useUser();
+  const diff = current - prev;
+
   return (
     <Card className="md:w-1/3 font-rub">
       <CardHeader>
-        <CardDescription>Savings</CardDescription>
-        <CardTitle className="text-2xl">0.00$</CardTitle>
+        <CardDescription>{label}</CardDescription>
+        <CardTitle className="text-2xl">
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: user?.user_metadata.currency ?? 'INR',
+          }).format(current ?? 0)}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex items-center gap-4">
         {current && current > prev ? (
@@ -27,7 +35,11 @@ const Stat = ({ current, prev, label }: StatPorps) => {
         ) : (
           <FaArrowTrendUp className="text-green-600 rounded-2xl bg-green-50 p-2 w-8 h-8" />
         )}
-        0.00$ to previous month
+        {new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: user?.user_metadata.currency ?? 'INR',
+        }).format(Math.abs(diff) ?? 0)}{' '}
+        to previous month
       </CardContent>
     </Card>
   );

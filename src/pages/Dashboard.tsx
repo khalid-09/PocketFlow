@@ -1,12 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 import DateRangePicker from '@/features/dashboard/DateRangePicker';
-import StatSkeleton from '@/features/dashboard/StatSkeleton';
 import Overview from '@/features/dashboard/Overview';
-// import OverviewSkeleton from '@/features/dashboard/OverviewSkeleton';
 import PerformanceChart from '@/features/dashboard/PerformanceChart';
-import Stat from '@/features/dashboard/Stat';
+import Stats from '@/features/dashboard/Stats';
 
 const Dashboard = () => {
+  const curDate = new Date();
+  const firstDayOfPrevMonth = new Date(
+    curDate.getFullYear(),
+    curDate.getMonth() - 1,
+    1
+  ).toLocaleDateString();
+  const firstDayOfCurMonth = new Date(
+    curDate.getFullYear(),
+    curDate.getMonth(),
+    1
+  ).toLocaleDateString();
+  console.log(firstDayOfPrevMonth, firstDayOfCurMonth);
+
   return (
     <>
       <Helmet title="Pocket Flow | Dashboard" />
@@ -14,9 +25,7 @@ const Dashboard = () => {
         <h1>Monthly Performance Dashboard</h1>
       </div>
       <div className="flex flex-col md:flex-row gap-6">
-        <Stat />
-        <StatSkeleton />
-        <StatSkeleton />
+        <Stats />
       </div>
       <div className="flex my-10 items-center justify-end">
         {/* <DateRangePicker /> */}
