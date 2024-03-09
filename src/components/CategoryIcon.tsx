@@ -22,7 +22,7 @@ const CategoryIcon = ({
       className={` rounded-full', mr-2 flex aspect-square items-center justify-center rounded-full bg-opacity-25 p-1 ${
         category.className
       } ${variant === 'selectCategory' && 'h-8 w-8'} ${
-        variant === 'category' && 'h-8 w-8'
+        variant === 'category' && 'h-14 w-14'
       }`}
     >
       <category.Icon

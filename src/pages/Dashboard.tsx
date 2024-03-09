@@ -19,7 +19,7 @@ const Dashboard = () => {
         <StatSkeleton />
       </div>
       <div className="flex my-10 items-center justify-end">
-        <DateRangePicker />
+        {/* <DateRangePicker /> */}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <PerformanceChart />

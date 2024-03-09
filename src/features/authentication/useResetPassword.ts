@@ -6,9 +6,10 @@ export const useResetPassword = () => {
   return useMutation({
     mutationFn: resetPassword,
     onSuccess: () =>
-      toast.success(
-        'We have sent you an email to reset your password. Please check your inbox.'
-      ),
+      toast.success('Email sent to reset password..', {
+        description:
+          'Check your inbox, if you do not see the email, it might take a few minutes to arrive. Also, check your spam folder.',
+      }),
     onError: error => toast.error(error.message),
   });
 };

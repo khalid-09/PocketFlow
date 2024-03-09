@@ -10,7 +10,7 @@ import { useExpenses } from '../expenses/useExpenses';
 import { useUser } from '../authentication/useUser';
 import CategoryIcon from '@/components/CategoryIcon';
 import { useIncomes } from '../incomes/useIncomes';
-import { Skeleton } from '@/components/ui/skeleton';
+import OverviewSkeleton from './OverviewSkeleton';
 
 const Overview = () => {
   const { data: expenses = [], isLoading: isExpenseLoading } = useExpenses();
@@ -22,20 +22,7 @@ const Overview = () => {
       <CardHeader>
         <CardTitle>Overview</CardTitle>
       </CardHeader>
-      {isExpenseLoading ||
-        (isIncomeLoading && (
-          <CardContent className="space-y-4">
-            {Array.from({ length: 5 }, (_, i) => (
-              <div key={i} className="flex items-center space-x-4">
-                <Skeleton className="h-12 w-12 rounded-full" />
-                <div className="space-y-2">
-                  <Skeleton className="h-4 w-[250px]" />
-                  <Skeleton className="h-4 w-[200px]" />
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        ))}
+      {isExpenseLoading || (isIncomeLoading && <OverviewSkeleton />)}
       <CardContent>
         <Tabs defaultValue="account" className="w-full">
           <TabsList className="grid w-full grid-cols-2">

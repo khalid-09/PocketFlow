@@ -1,4 +1,3 @@
-import DatePicker from '@/components/DatePicker';
 import {
   Select,
   SelectContent,
@@ -8,10 +7,48 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const DateRangePicker = () => {
+import { CalendarIcon } from '@radix-ui/react-icons';
+import { format } from 'date-fns';
+
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+
+type DateRangePickerProps = {
+  date: Date | undefined;
+  setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+};
+
+const DateRangePicker = ({ date, setDate }: DateRangePickerProps) => {
   return (
     <div className="flex items-center gap-1">
-      <DatePicker />
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant={'outline'}
+            className={cn(
+              'w-[200px] justify-start text-left font-normal',
+              !date && 'text-muted-foreground'
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {date ? format(date, 'PPP') : <span>Pick a date</span>}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            initialFocus
+          />
+        </PopoverContent>
+      </Popover>
       <Select>
         <SelectTrigger className="w-[140px]">
           <SelectValue placeholder="Select" />

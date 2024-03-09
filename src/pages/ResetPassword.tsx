@@ -9,9 +9,10 @@ import { Helmet } from 'react-helmet-async';
 import { forgotPasswordSchema } from '@/utils/validation/auth';
 import Error from '@/components/Error';
 import { useResetPassword } from '@/features/authentication/useResetPassword';
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const ResetPassword = () => {
-  const { mutate: resetPassword } = useResetPassword();
+  const { mutate: resetPassword, isPending: isResetting } = useResetPassword();
 
   const {
     register,
@@ -39,7 +40,12 @@ const ResetPassword = () => {
             />
             {errors?.email && <Error>{errors?.email?.message}</Error>}
           </div>
-          <Button className="mt-3 w-full">Send password reset email</Button>
+          <Button className="mt-3 w-full">
+            {isResetting && (
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            )}{' '}
+            {isResetting ? 'Sending email...' : ' Send email to reset password'}
+          </Button>
         </form>
       </div>
     </>
