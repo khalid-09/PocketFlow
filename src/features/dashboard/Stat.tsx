@@ -39,7 +39,7 @@ const Stat = ({ current, prev, label }: StatPorps) => {
           style: 'currency',
           currency: user?.user_metadata.currency ?? 'INR',
         }).format(Math.abs(diff) ?? 0)}{' '}
-        to previous month
+        compared to previous month
       </CardContent>
     </Card>
   );

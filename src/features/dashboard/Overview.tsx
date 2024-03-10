@@ -19,7 +19,7 @@ const Overview = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="font-rub">
         <CardTitle>Overview</CardTitle>
       </CardHeader>
       {isExpenseLoading || (isIncomeLoading && <OverviewSkeleton />)}

@@ -3,6 +3,7 @@ import discover1 from '../../assets/discover-1.svg';
 import discover2 from '../../assets/discover-2.svg';
 import discover3 from '../../assets/discover-3.svg';
 import discover4 from '../../assets/discover-4.svg';
+import { motion } from 'framer-motion';
 
 const discoveries = [
   {
@@ -53,16 +54,23 @@ const Discover = () => {
               className="hidden md:block"
             />
           )}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-xl tracking-wide">
-                {discover.heading}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm tracking-wide">{discover.text}</p>
-            </CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: '100%' }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, type: 'spring', stiffness: 100 }}
+            viewport={{ once: true }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl tracking-wide">
+                  {discover.heading}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm tracking-wide">{discover.text}</p>
+              </CardContent>
+            </Card>
+          </motion.div>
           {!discover.reverse && (
             <img
               src={discover.imgPath}

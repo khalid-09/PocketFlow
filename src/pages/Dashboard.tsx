@@ -1,23 +1,10 @@
 import { Helmet } from 'react-helmet-async';
-import DateRangePicker from '@/features/dashboard/DateRangePicker';
+// import DateRangePicker from '@/features/dashboard/DateRangePicker';
 import Overview from '@/features/dashboard/Overview';
 import PerformanceChart from '@/features/dashboard/PerformanceChart';
 import Stats from '@/features/dashboard/Stats';
 
 const Dashboard = () => {
-  const curDate = new Date();
-  const firstDayOfPrevMonth = new Date(
-    curDate.getFullYear(),
-    curDate.getMonth() - 1,
-    1
-  ).toLocaleDateString();
-  const firstDayOfCurMonth = new Date(
-    curDate.getFullYear(),
-    curDate.getMonth(),
-    1
-  ).toLocaleDateString();
-  console.log(firstDayOfPrevMonth, firstDayOfCurMonth);
-
   return (
     <>
       <Helmet title="Pocket Flow | Dashboard" />

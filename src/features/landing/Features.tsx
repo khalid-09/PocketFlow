@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   BadgeDollarSign,
@@ -39,6 +41,8 @@ const features: Feature[] = [
   },
 ];
 
+const MotionCard = motion(Card);
+
 const Features = () => {
   return (
     <section className="mx-auto max-w-4xl pb-32">
@@ -52,7 +56,13 @@ const Features = () => {
       </div>
       <div className="md:grid-cols-2 font-rub grid gap-8 p-3 md:p-0 md:mt-10 mt-4 ">
         {features.map(feature => (
-          <Card key={feature.title}>
+          <MotionCard
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.3 }}
+            key={feature.title}
+          >
             <CardHeader>
               <span className="text-red-400">{feature.icon}</span>
               <CardTitle className="text-xl tracking-wide">
@@ -62,7 +72,7 @@ const Features = () => {
             <CardContent>
               <p className="text-sm tracking-wide">{feature.description}</p>
             </CardContent>
-          </Card>
+          </MotionCard>
         ))}
       </div>
     </section>

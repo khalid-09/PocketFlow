@@ -2,10 +2,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { PlayCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const CTA = () => {
   return (
-    <section className="p-3">
+    <motion.section
+      initial={{ opacity: 0, y: '100%' }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, type: 'spring', stiffness: 100 }}
+      viewport={{ once: true }}
+      className="p-3"
+    >
       <Card className="text-center font-rub mb-32 p-2 pb-4">
         <CardHeader className="text-lg font-bold md:text-4xl">
           Ready to take control of your Finances?
@@ -30,7 +37,7 @@ const CTA = () => {
           <PlayCircle />
         </div>
       </Card>
-    </section>
+    </motion.section>
   );
 };
 
