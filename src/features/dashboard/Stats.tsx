@@ -4,7 +4,7 @@ import { useStats } from './useStats';
 
 const Stats = () => {
   const { data, isLoading } = useStats();
-
+  console.log(data);
   const savings = data && data?.income.cur - data?.expenses.cur;
   const savingsPrevMonth = data && data?.income.prev - data?.expenses.prev;
 

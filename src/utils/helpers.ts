@@ -8,7 +8,7 @@ export const formatCurrency = (price: number, currency = 'USD') => {
 export const formatDate = (date?: string | Date, format = 'short') => {
   if (!date) return;
 
-  return new Date(date).toLocaleDateString('en-CA', { dateStyle: format });
+  return new Date(date).toLocaleDateString('en-US', { dateStyle: format });
 };
 
 export const getDateFromStartDate = (date: Date | string) => {

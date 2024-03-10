@@ -1,6 +1,5 @@
 import supabase from '@/lib/supabase';
 import { Expense } from '@/types/expense';
-// import { Expense } from '@/types/expense';
 import { toast } from 'sonner';
 
 export const getStats = async () => {

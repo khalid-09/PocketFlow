@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import DateRangePicker from '../dashboard/DateRangePicker';
+import DateRangePicker from './DateRangePicker';
 import SelectCategroy from '../category/SelectCategory';
 
 import { Button } from '@/components/ui/button';

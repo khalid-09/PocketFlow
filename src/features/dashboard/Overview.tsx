@@ -22,18 +22,18 @@ const Overview = () => {
       <CardHeader className="font-rub">
         <CardTitle>Overview</CardTitle>
       </CardHeader>
-      {isExpenseLoading || (isIncomeLoading && <OverviewSkeleton />)}
       <CardContent>
-        <Tabs defaultValue="account" className="w-full">
+        <Tabs defaultValue="expense" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="account">Expenses</TabsTrigger>
-            <TabsTrigger value="password">Incomes</TabsTrigger>
+            <TabsTrigger value="expense">Expenses</TabsTrigger>
+            <TabsTrigger value="income">Incomes</TabsTrigger>
           </TabsList>
           <div className="flex justify-between p-3">
             <CardDescription>Category</CardDescription>
             <CardDescription>Amount</CardDescription>
           </div>
-          <TabsContent value="account" className="font-rub p-3">
+          {(isExpenseLoading || isIncomeLoading) && <OverviewSkeleton />}
+          <TabsContent value="expense" className="font-rub p-3">
             <div className="space-y-3">
               {expenses?.map(expense => (
                 <div
@@ -56,7 +56,7 @@ const Overview = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="password" className="font-rub p-3">
+          <TabsContent value="income" className="font-rub p-3">
             <div className="space-y-3">
               {incomes?.map(income => (
                 <div

@@ -1,12 +1,15 @@
 import CategoryChart from '@/features/category/CategoryChart';
 import ExpensesPerCategory from '@/features/category/ExpensesPerCategory';
-import DateRangePicker from '@/features/dashboard/DateRangePicker';
+import DateRangePicker from '@/features/common/DateRangePicker';
 import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 import { Helmet } from 'react-helmet-async';
 
 const Categories = () => {
-  const [date, setDate] = useState<Date>();
-  console.log(date?.toLocaleDateString());
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: new Date('1,1,2024'),
+    to: new Date(),
+  });
 
   return (
     <>
@@ -20,7 +23,7 @@ const Categories = () => {
         <p>Expenses Per Category</p>
         <DateRangePicker date={date} setDate={setDate} />
       </div>
-      <ExpensesPerCategory />
+      <ExpensesPerCategory date={date} />
       <CategoryChart />
     </>
   );
