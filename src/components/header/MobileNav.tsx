@@ -56,7 +56,10 @@ const MobileNav = () => {
                 src={user?.user_metadata?.avatar_url}
               />
               <AvatarFallback>CN</AvatarFallback>
-              <span>{user?.user_metadata?.full_name}</span>
+              <span>
+                {user?.user_metadata?.full_name ||
+                  user?.user_metadata?.username}
+              </span>
             </Avatar>
           </SheetDescription>
         </SheetHeader>
