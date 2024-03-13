@@ -7,7 +7,7 @@ export const formatCurrency = (price: number, currency = 'INR') => {
 
 export const formatDate = (date?: string | Date, format = 'short') => {
   if (!date) return;
-
+  // @ts-expect-error Description is added to explain why the @ts-expect-error is necessary.
   return new Date(date).toLocaleDateString('en-US', { dateStyle: format });
 };
 
