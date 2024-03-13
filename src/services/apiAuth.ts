@@ -2,8 +2,8 @@ import supabase from '@/lib/supabase';
 import { Login, Signup } from '@/types/auth';
 import { toast } from 'sonner';
 
-const VITE_SUPABASE_OAUTH_REDIRECT_URL =
-  'http://localhost:5173/dashboard' as const;
+// const VITE_SUPABASE_OAUTH_REDIRECT_URL =
+//   'http://localhost:5173/dashboard' as const;
 
 export const login = async ({ email, password }: Login) => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -53,18 +53,18 @@ export const getUser = async () => {
 export const signInWithGoogle = () => {
   supabase.auth.signInWithOAuth({
     provider: 'google',
-    options: {
-      redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
-    },
+    // options: {
+    //   redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
+    // },
   });
 };
 
 export const signInWithGithub = () => {
   supabase.auth.signInWithOAuth({
     provider: 'github',
-    options: {
-      redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
-    },
+    // options: {
+    //   redirectTo: VITE_SUPABASE_OAUTH_REDIRECT_URL,
+    // },
   });
 };
 
