@@ -41,7 +41,7 @@ const EditExpenseForm = () => {
   const location = useLocation();
   const expenseData = location.state;
   const { mutate: editExpense, isPending } = useEditExpense();
-
+  console.log(expenseData);
   const form = useForm<CreateEditExpense>({
     resolver: zodResolver(expenseSchema),
     defaultValues: {
@@ -54,6 +54,7 @@ const EditExpenseForm = () => {
   });
 
   const onSubmit = (expense: CreateEditExpense) => {
+    console.log(expense);
     editExpense({ id: expenseData.id, expense });
   };
 

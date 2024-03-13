@@ -23,7 +23,7 @@ export const createIncome = async (income: CreateEditIncome) => {
       {
         ...income,
         amount: +income.amount,
-        date: income.date.toLocaleDateString(),
+        date: income.date.toLocaleDateString('en-US'),
       },
     ])
     .select();
@@ -45,7 +45,7 @@ export const editIncome = async ({
     .update({
       ...income,
       amount: +income.amount,
-      date: income.date.toLocaleDateString(),
+      date: income.date.toLocaleDateString('en-US'),
     })
     .eq('id', id)
     .select();

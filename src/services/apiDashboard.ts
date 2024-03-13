@@ -9,12 +9,12 @@ export const getStats = async () => {
     curDate.getFullYear(),
     curDate.getMonth() - 1,
     1
-  ).toLocaleDateString();
+  ).toLocaleDateString('en-US');
   const firstDayOfCurMonth = new Date(
     curDate.getFullYear(),
     curDate.getMonth(),
     1
-  ).toLocaleDateString();
+  ).toLocaleDateString('en-US');
 
   const { data: expensesOfCurMonth, error: errorInCurMonthExpenses } =
     await supabase
@@ -79,8 +79,8 @@ export const getStats = async () => {
 
 export const getPerformace = async (date: DateRange | undefined) => {
   const from = date?.from
-    ? new Date(date.from).toLocaleDateString()
-    : new Date(new Date('1,1,2024')).toLocaleDateString();
+    ? new Date(date.from).toLocaleDateString('en-US')
+    : new Date(new Date('1,1,2024')).toLocaleDateString('en-US');
 
   const to = date?.to
     ? new Date(date.to).toLocaleDateString()

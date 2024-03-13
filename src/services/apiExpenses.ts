@@ -23,7 +23,7 @@ export const createExpense = async (expense: CreateEditExpense) => {
       {
         ...expense,
         amount: +expense.amount,
-        date: expense.date.toLocaleDateString(),
+        date: expense.date.toLocaleDateString('en-US'),
       },
     ])
     .select();
@@ -45,7 +45,7 @@ export const editExpense = async ({
     .update({
       ...expense,
       amount: +expense.amount,
-      date: expense.date.toLocaleDateString(),
+      date: expense.date.toLocaleDateString('en-US'),
     })
     .eq('id', id)
     .select();
