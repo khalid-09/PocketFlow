@@ -24,7 +24,7 @@ const Categories = () => {
         <DateRangePicker date={date} setDate={setDate} />
       </div>
       <ExpensesPerCategory date={date} />
-      <CategoryChart />
+      <CategoryChart date={date} />
     </>
   );
 };

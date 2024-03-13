@@ -9,11 +9,16 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { categories } from '@/utils/constansts';
 
-const SelectCategory = () => {
+type SelectedCategoryProps = {
+  selected?: string;
+  setSelected?: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const SelectCategory = ({ selected, setSelected }: SelectedCategoryProps) => {
   const seletectCategory = categories;
 
   return (
-    <Select>
+    <Select value={selected} onValueChange={setSelected}>
       <SelectTrigger className="w-[280px] h-12">
         <SelectValue placeholder="Select category" />
       </SelectTrigger>
