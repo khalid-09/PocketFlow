@@ -9,12 +9,12 @@ export const getStats = async () => {
     curDate.getFullYear(),
     curDate.getMonth() - 1,
     1
-  ).toLocaleDateString('en-US');
+  ).toLocaleDateString();
   const firstDayOfCurMonth = new Date(
     curDate.getFullYear(),
     curDate.getMonth(),
     1
-  ).toLocaleDateString('en-US');
+  ).toLocaleDateString();
 
   const { data: expensesOfCurMonth, error: errorInCurMonthExpenses } =
     await supabase
