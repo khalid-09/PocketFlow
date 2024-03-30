@@ -19,10 +19,10 @@ const Overview = () => {
 
   return (
     <Card>
-      <CardHeader className="font-rub">
+      <CardHeader className="font-rub w-full col-span-1">
         <CardTitle>Overview</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="w-full">
         <Tabs defaultValue="expense" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="expense">Expenses</TabsTrigger>
@@ -33,8 +33,8 @@ const Overview = () => {
             <CardDescription>Amount</CardDescription>
           </div>
           {(isExpenseLoading || isIncomeLoading) && <OverviewSkeleton />}
-          <TabsContent value="expense" className="font-rub p-3">
-            <div className="space-y-3">
+          <TabsContent value="expense" className="font-rub block p-3">
+            <div className="space-y-3 w-full">
               {expenses?.map(expense => (
                 <div
                   key={expense.id}
@@ -56,8 +56,8 @@ const Overview = () => {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="income" className="font-rub p-3">
-            <div className="space-y-3">
+          <TabsContent value="income" className="font-rub block p-3">
+            <div className="space-y-3 w-full">
               {incomes?.map(income => (
                 <div
                   key={income.id}
